@@ -1,5 +1,5 @@
 const App = () => {
-  return <main>APP</main>;
+  return <main>APP atualizado</main>;
 };
 
 export default App;
