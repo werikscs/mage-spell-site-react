@@ -9,8 +9,13 @@ declare module "styled-components" {
       secondary: string;
       terciary: string;
       text: string;
-      detailText: string;
+      accent: string;
       divider: string;
+      shadow: string;
+    };
+
+    sizes: {
+      headerHeight: string;
     };
   }
 }
