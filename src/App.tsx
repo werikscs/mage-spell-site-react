@@ -1,8 +1,12 @@
 import Header from "./components/Header"
+import AppRoutes from "./routes"
 
 const App = (): JSX.Element => {
   return (
-    <Header />
+    <>
+      <Header />
+      <AppRoutes />
+    </>
   )
 }
 
