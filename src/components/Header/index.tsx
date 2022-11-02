@@ -1,20 +1,23 @@
 import logoLight from '../../assets/logo-light.svg'
-import changeThemeDark from '../../assets/change-theme-dark.svg'
-import closedMenuLight from '../../assets/closed-menu-light.svg'
+import logoDark from '../../assets/logo-dark.svg'
+import toggleMenuDark from '../../assets/toggle-menu-dark.svg'
+import toggleMenuLight from '../../assets/toggle-menu-light.svg'
 import { StyledHeader, StyledNavHeader } from './style'
+import ThemeSwitcherBtn from '../ToggleThemeButton'
+import { useContext } from 'react'
+import ToogleThemeContext from '../../context/ToogleThemeContext'
 
 const Header = (): JSX.Element => {
+  const {theme} = useContext(ToogleThemeContext)
   return (
     <StyledHeader>
       <a href="#">
-        <img src={logoLight} alt="site logo" />
+        <img src={theme === 'light' ? logoLight : logoDark} alt="site logo" />
       </a>
       <StyledNavHeader>
-        <button className='toggle-theme-btn'>
-          <img src={changeThemeDark} alt="" />
-        </button>
+        <ThemeSwitcherBtn />
         <button>
-          <img src={closedMenuLight} alt="" />
+          <img src={theme === 'light' ? toggleMenuLight : toggleMenuDark} alt="" />
         </button>
       </StyledNavHeader>
     </StyledHeader>
