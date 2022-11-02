@@ -2,7 +2,7 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    title: string;
+    theme: string;
 
     colors: {
       primary: string;
@@ -12,6 +12,7 @@ declare module "styled-components" {
       accent: string;
       divider: string;
       shadow: string;
+      generalBg: string;
     };
 
     sizes: {
