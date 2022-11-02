@@ -1,5 +1,9 @@
+import Header from "./components/Header"
+
 const App = (): JSX.Element => {
-  return <h1>Hello, Community Spells</h1>
+  return (
+    <Header />
+  )
 }
 
 export default App

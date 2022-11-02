@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
   body{
     min-width: 320px;
     height: 100vh;
+    background-color: ${({ theme }) => theme.colors.generalBg};
   }
   button {
     cursor: pointer;

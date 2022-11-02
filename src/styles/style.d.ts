@@ -2,15 +2,21 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    title: string;
+    theme: string;
 
     colors: {
       primary: string;
       secondary: string;
       terciary: string;
       text: string;
-      detailText: string;
+      accent: string;
       divider: string;
+      shadow: string;
+      generalBg: string;
+    };
+
+    sizes: {
+      headerHeight: string;
     };
   }
 }
