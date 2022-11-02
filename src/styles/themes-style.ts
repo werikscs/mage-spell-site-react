@@ -22,7 +22,7 @@ export const dark: DefaultTheme = {
   colors: {
     primary: "#242424",
     secondary: "#1F1F1F",
-    terciary: "",
+    terciary: "#121212",
     text: "#C8C8C8",
     accent: "#94B9D1",
     divider: "",
