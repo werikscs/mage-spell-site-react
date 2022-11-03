@@ -1,17 +1,14 @@
 import { useState } from "react"
-import ToogleThemeContext from "../context/ToogleThemeContext"
-import { ThemeTypes } from "../interfaces/types"
+import ToogleThemeContext from "../context/ToggleThemeContext"
+import { IReactChildren } from "../interfaces-types/interfaces"
+import { ThemeTypes } from "../interfaces-types/types"
 
-interface ToogleThemeProviderProps {
-  children: React.ReactNode
-}
-
-const ToogleThemeProvider = ({children}: ToogleThemeProviderProps) => {
+const ToogleThemeProvider = ({children}: IReactChildren) => {
 
   const [theme, setTheme] = useState<ThemeTypes>('light')
 
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : "light")
+    setTheme(() => theme === 'light' ? 'dark' : "light")
   }
 
   return (
