@@ -6,9 +6,11 @@ const StyledNav = styled.nav`
   right: 0;
 
   width: 240px;
-  height: 100vh;
+  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
 
   background-color: ${({ theme }) => theme.colors.secondary};
+
+  box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
 `;
 
 export default StyledNav;
