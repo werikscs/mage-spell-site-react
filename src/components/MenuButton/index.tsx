@@ -5,7 +5,7 @@ import ToggleMenuContext from "../../context/ToggleMenuContext"
 import ToogleThemeContext from "../../context/ToggleThemeContext"
 import { StyledButton } from "./style"
 
-const MenuButton = () => {
+const MenuButton = (): JSX.Element => {
   const {toggleMenu} = useContext(ToggleMenuContext)
   const {theme} = useContext(ToogleThemeContext)
 
