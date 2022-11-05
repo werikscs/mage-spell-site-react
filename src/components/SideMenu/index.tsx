@@ -8,7 +8,7 @@ const SideMenu = (): JSX.Element => {
   return  (
     <StyledNav animate={isMenuOpened ? 'visible' : 'hidden'}>
       <section>
-        
+  
       </section>
     </StyledNav>
   )
