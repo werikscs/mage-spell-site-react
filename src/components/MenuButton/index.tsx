@@ -11,7 +11,7 @@ const MenuButton = (): JSX.Element => {
 
   return (
     <StyledButton
-      isMenuOpened={isMenuOpened}
+      animate={isMenuOpened ? 'opened' : 'closed'}
       onClick={toggleMenu}
     >
       <img
