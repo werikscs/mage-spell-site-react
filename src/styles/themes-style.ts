@@ -14,6 +14,8 @@ export const light: DefaultTheme = {
   },
   sizes: {
     headerHeight: "60px",
+    sideMenuMobile: '240px',
+    sideMenuDesktop: '270px'
   },
 };
 
@@ -31,5 +33,7 @@ export const dark: DefaultTheme = {
   },
   sizes: {
     headerHeight: "60px",
+    sideMenuMobile: '240px',
+    sideMenuDesktop: '270px'
   },
 };
