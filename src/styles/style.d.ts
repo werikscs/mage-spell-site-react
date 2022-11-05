@@ -17,6 +17,8 @@ declare module "styled-components" {
 
     sizes: {
       headerHeight: string;
+      sideMenuMobile: string;
+      sideMenuDesktop: string;
     };
   }
 }

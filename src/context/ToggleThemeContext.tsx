@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ThemeTypes } from "../interfaces/types";
+import { ThemeTypes } from "../interfaces-types/types";
 
 interface IToogleThemeContext {
   theme: ThemeTypes

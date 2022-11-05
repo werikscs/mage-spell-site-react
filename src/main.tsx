@@ -1,27 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { ThemeContext, ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-import ToogleThemeContext from './context/ToogleThemeContext'
-import ToogleThemeProvider from './providers/ThemeProvider'
+import Providers from './providers'
 import GlobalStyle from './styles/global-style'
-import { dark, light } from './styles/themes-style'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <ToogleThemeProvider>
-      <ToogleThemeContext.Consumer>
-        {
-          (value) => (
-            <ThemeProvider theme={value.theme === 'light' ? light : dark}>
-              <GlobalStyle />
-              <App />
-            </ThemeProvider>
-          )
-        }
-      </ToogleThemeContext.Consumer>
-    </ToogleThemeProvider>
+    <BrowserRouter>
+      <Providers>
+        <GlobalStyle />
+        <App />
+      </Providers>
+    </BrowserRouter>
   </React.StrictMode>
 )

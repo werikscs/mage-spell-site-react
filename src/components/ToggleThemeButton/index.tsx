@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import changeThemeDarkIcon from '../../assets/change-theme-dark.svg'
 import changeThemeLightIcon from '../../assets/change-theme-light.svg'
-import ToogleThemeContext from '../../context/ToogleThemeContext'
+import ToogleThemeContext from '../../context/ToggleThemeContext'
 import { StyledButton } from './style'
 
 const ThemeSwitcherBtn = (): JSX.Element => {
