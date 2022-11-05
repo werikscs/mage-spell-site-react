@@ -6,7 +6,7 @@ const SideMenu = (): JSX.Element => {
   const {isMenuOpened} = useContext(ToggleMenuContext)
   
   return  (
-    <StyledNav isMenuOpened={isMenuOpened}>
+    <StyledNav animate={isMenuOpened ? 'visible' : 'hidden'}>
       <section>
         
       </section>

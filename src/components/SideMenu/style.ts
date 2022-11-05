@@ -1,27 +1,14 @@
-import styled, { css, keyframes } from "styled-components";
-import { IToggleMenu } from "../../interfaces-types/interfaces";
+import styled from "styled-components";
+import { motion } from 'framer-motion'
 
-const open = keyframes`
-  0% {
-    width: 0px;
-  }
+const variants = {
+  visible: { width: '240px', transition: { duration: 0.25 } },
+  hidden: { width: 0 }
+};
 
-  100% {
-    width: 260px;
-  }
-`;
-
-const close = keyframes`
-  0% {
-    width: 260px;
-  }
-
-  100% {
-    width: 0px;
-  }
-`;
-
-const StyledNav = styled.nav<IToggleMenu>`
+const StyledNav = styled(motion.nav).attrs(() => ({
+  initial: 'hidden', variants})
+)`
   position: absolute;
   top: 0px;
   right: 0;
@@ -33,13 +20,6 @@ const StyledNav = styled.nav<IToggleMenu>`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
-
-  animation: ${({isMenuOpened}) => isMenuOpened ? css`${close}` : css`${open}`} 0.5s forwards;
-  animation-play-state: paused;
-
-  :active {
-    animation-play-state: running;
-  }
 `;
 
 export default StyledNav;
