@@ -12,10 +12,14 @@ export const StyledButton = styled.button`
   @media (hover: hover) {
     :hover {
       background-color: ${({ theme }) => theme.colors.terciary};
+      transform: scale(1.2);
+      transition: transform 0.5s;
     }
   }
 
   :active {
     background-color: ${({ theme }) => theme.colors.terciary};
+    transform: scale(1.2);
+    transition: transform 0.5s;
   }
 `;
