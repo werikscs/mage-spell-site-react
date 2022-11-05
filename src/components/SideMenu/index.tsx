@@ -5,14 +5,12 @@ import StyledNav from "./style"
 const SideMenu = (): JSX.Element => {
   const {isMenuOpened} = useContext(ToggleMenuContext)
   
-  return isMenuOpened ? (
-    <StyledNav>
+  return  (
+    <StyledNav isMenuOpened={isMenuOpened}>
       <section>
         
       </section>
     </StyledNav>
-  ) : (
-    <></>
   )
   
 }
