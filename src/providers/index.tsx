@@ -1,24 +1,24 @@
-import { ThemeProvider } from "styled-components"
-import ToogleThemeContext from "../context/ToggleThemeContext"
 import { IReactChildren } from "../interfaces-types/interfaces"
 import { dark, light } from "../styles/themes-style"
+import { ThemeProvider } from "styled-components"
+import ToggleThemeContext from "../context/ToggleThemeContext"
 import ToggleMenuProvider from "./ToggleMenuProvider"
 import ToogleThemeProvider from "./ToggleThemeProvider"
 
 const Providers = ({children}: IReactChildren) => {
   return (
     <ToogleThemeProvider>
-      <ToogleThemeContext.Consumer>
+      <ToggleThemeContext.Consumer>
         {
           (value) => (
-            <ThemeProvider theme={value.theme === 'light' ? light : dark}>
+            <ThemeProvider theme={value.themeType === 'light' ? light : dark}>
               <ToggleMenuProvider>
                 {children}
               </ToggleMenuProvider>
             </ThemeProvider>
           )
         }
-      </ToogleThemeContext.Consumer>
+      </ToggleThemeContext.Consumer>
     </ToogleThemeProvider>
   )
 }
