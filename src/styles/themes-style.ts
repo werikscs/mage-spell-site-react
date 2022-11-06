@@ -16,10 +16,12 @@ export const light: DefaultTheme = {
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '320px'
+    sideMenuShadow: '100%'
   },
   animation: {
-    duration: 0.25
+    fast: 0.1,
+    normal: 0.25,
+    slow: 0.75
   }
 };
 
@@ -39,9 +41,11 @@ export const dark: DefaultTheme = {
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '320px'
+    sideMenuShadow: '100%'
   },
   animation: {
-    duration: 0.25
+    fast: 0.25,
+    normal: 0.5,
+    slow: 0.75
   }
 };

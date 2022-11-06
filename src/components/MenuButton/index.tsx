@@ -12,8 +12,8 @@ const MenuButton = (): JSX.Element => {
   const theme = useTheme()
 
   const variants = {
-    opened: { scaleX: -1 , transition: { duration: theme.animation.duration }},
-    closed: { scaleY: 1, transition: { duration: theme.animation.duration }}
+    opened: { scaleX: -1 , transition: { duration: theme.animation.normal }},
+    closed: { scaleX: 1, transition: { duration: theme.animation.normal }}
   }
 
   return (

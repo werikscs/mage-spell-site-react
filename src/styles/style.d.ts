@@ -23,7 +23,9 @@ declare module "styled-components" {
     };
 
     animation: {
-      duration: number;
+      fast: number;
+      normal: number;
+      slow: number;
     }
   }
 }

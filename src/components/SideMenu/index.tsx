@@ -10,9 +10,11 @@ const SideMenu = (): JSX.Element => {
   const variants = {
     visible: { 
       width: theme.sizes.sideMenuShadow, 
-      transition: { duration: theme.animation.duration }
+      transition: { duration: theme.animation.fast }
     },
-    hidden: { width: 0, transition: { duration: theme.animation.duration } }
+    hidden: {
+      width: 0,
+      transition: { duration: theme.animation.fast } }
   };
   
   return  (

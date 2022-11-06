@@ -12,6 +12,16 @@ const StyledNav = styled(motion.nav)`
   background-color: ${({ theme }) => theme.colors.shadowMenu};
 
   box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
+
+  > section {
+    width: 100%;
+    max-width: ${({ theme }) => theme.sizes.sideMenu};
+    height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
+
+    margin-left: auto;
+
+    background-color: ${({theme}) => theme.colors.secondary};
+  }
 `;
 
 export default StyledNav;
