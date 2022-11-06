@@ -10,13 +10,17 @@ export const light: DefaultTheme = {
     accent: "#547A92",
     divider: "#6D90A625",
     shadow: "#6D90A675",
+    shadowMenu: "#394D5950",
     generalBg: "#C1D2D9",
   },
   sizes: {
     headerHeight: "60px",
-    sideMenuMobile: '240px',
-    sideMenuDesktop: '270px'
+    sideMenu: '270px',
+    sideMenuShadow: '320px'
   },
+  animation: {
+    duration: 0.25
+  }
 };
 
 export const dark: DefaultTheme = {
@@ -29,11 +33,15 @@ export const dark: DefaultTheme = {
     accent: "#94B9D1",
     divider: "",
     shadow: "#00000050",
+    shadowMenu: "#1F1F1F75",
     generalBg: "#121212",
   },
   sizes: {
     headerHeight: "60px",
-    sideMenuMobile: '240px',
-    sideMenuDesktop: '270px'
+    sideMenu: '270px',
+    sideMenuShadow: '320px'
   },
+  animation: {
+    duration: 0.25
+  }
 };

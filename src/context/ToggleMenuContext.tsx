@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import { ToggleMenuTypes } from "../interfaces-types/types";
 
-interface IToogleMenuContext {
+interface IToggleMenuContext {
   isMenuOpened: ToggleMenuTypes
   toggleMenu: () => void
 }
 
-const ToggleMenuContext = createContext<IToogleMenuContext>({
+const ToggleMenuContext = createContext<IToggleMenuContext>({
   isMenuOpened: false, toggleMenu: () => {}
 })
 

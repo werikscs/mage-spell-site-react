@@ -1,18 +1,28 @@
 import { useContext } from 'react'
+import { useTheme } from 'styled-components'
 import changeThemeDarkIcon from '../../assets/change-theme-dark.svg'
 import changeThemeLightIcon from '../../assets/change-theme-light.svg'
-import ToogleThemeContext from '../../context/ToggleThemeContext'
+import ToggleThemeContext from '../../context/ToggleThemeContext'
 import { StyledButton } from './style'
 
 const ThemeSwitcherBtn = (): JSX.Element => {
-  const {theme, toggleTheme} = useContext(ToogleThemeContext)
+  const {themeType, toggleTheme} = useContext(ToggleThemeContext)
+  const theme = useTheme()
+
+  const hoverTap = {
+    scale: 1.25,
+    transition: { duration: theme.animation.duration },
+    backgroundColor: theme.colors.terciary
+  }
   
   return (
     <StyledButton
+      whileHover={hoverTap}
+      whileTap={hoverTap}
       onClick={toggleTheme}
     >
       <img
-        src={ theme === 'light' ? changeThemeDarkIcon : changeThemeLightIcon }
+        src={ themeType === 'light' ? changeThemeDarkIcon : changeThemeLightIcon }
         alt="" />
     </StyledButton>
   )

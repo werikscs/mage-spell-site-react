@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import {motion} from "framer-motion";
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(motion.button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 32px;
   height: 32px;
 
@@ -8,18 +13,4 @@ export const StyledButton = styled.button`
   padding: 4px;
 
   background-color: transparent;
-
-  @media (hover: hover) {
-    :hover {
-      background-color: ${({ theme }) => theme.colors.terciary};
-      transform: scale(1.2);
-      transition: transform 0.5s;
-    }
-  }
-
-  :active {
-    background-color: ${({ theme }) => theme.colors.terciary};
-    transform: scale(1.2);
-    transition: transform 0.5s;
-  }
 `;

@@ -1,13 +1,13 @@
 import { createContext } from "react";
 import { ThemeTypes } from "../interfaces-types/types";
 
-interface IToogleThemeContext {
-  theme: ThemeTypes
+interface IToggleThemeContext {
+  themeType: ThemeTypes
   toggleTheme: () => void
 }
 
-const ToogleThemeContext = createContext<IToogleThemeContext>({
-  theme: "light", toggleTheme: () => {}
+const ToggleThemeContext = createContext<IToggleThemeContext>({
+  themeType: "light", toggleTheme: () => {}
 })
 
-export default ToogleThemeContext
+export default ToggleThemeContext

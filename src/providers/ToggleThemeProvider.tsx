@@ -1,25 +1,25 @@
 import { useState } from "react"
-import ToogleThemeContext from "../context/ToggleThemeContext"
+import ToggleThemeContext from "../context/ToggleThemeContext"
 import { IReactChildren } from "../interfaces-types/interfaces"
 import { ThemeTypes } from "../interfaces-types/types"
 
 const ToogleThemeProvider = ({children}: IReactChildren) => {
 
-  const [theme, setTheme] = useState<ThemeTypes>('light')
+  const [themeType, setTheme] = useState<ThemeTypes>('light')
 
   const toggleTheme = () => {
-    setTheme(() => theme === 'light' ? 'dark' : "light")
+    setTheme(() => themeType === 'light' ? 'dark' : "light")
   }
 
   return (
-    <ToogleThemeContext.Provider
+    <ToggleThemeContext.Provider
       value={{
-        theme,
+        themeType,
         toggleTheme
       }}
     >
       {children}
-    </ToogleThemeContext.Provider>
+    </ToggleThemeContext.Provider>
   )
 }
 
