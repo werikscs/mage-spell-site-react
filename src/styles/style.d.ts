@@ -14,6 +14,7 @@ declare module "styled-components" {
       shadow: string;
       shadowMenu: string
       generalBg: string;
+      transparent: string
     };
 
     sizes: {
