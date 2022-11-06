@@ -1,7 +1,9 @@
 import { useContext } from "react"
 import { useTheme } from "styled-components"
 import ToggleMenuContext from "../../context/ToggleMenuContext"
-import StyledNav from "./style"
+import SearchBar from "../SearchBar"
+import {StyledDiv} from "./style"
+import {StyledSection} from './style'
 
 const SideMenu = (): JSX.Element => {
   const {isMenuOpened} = useContext(ToggleMenuContext)
@@ -9,23 +11,38 @@ const SideMenu = (): JSX.Element => {
 
   const variants = {
     visible: { 
+      opacity: 1,
       width: theme.sizes.sideMenuShadow, 
-      transition: { duration: theme.animation.fast }
+      transition: { 
+        duration: 0.25,
+      },
     },
     hidden: {
-      width: 0,
-      transition: { duration: theme.animation.fast } }
+      opacity: 0,
+      width: theme.sizes.sideMenuShadow,
+      transition: { 
+        duration: 0.25,
+      } 
+    }
   };
+
+  const child = {
+    hidden: { display: 'none', width: 0, transition: { duration: theme.animation.fast } },
+    visible: { display: 'flex', width: theme.sizes.sideMenu, transition: { duration: theme.animation.fast } },
+  }
   
   return  (
-    <StyledNav
+    <StyledDiv
       animate={isMenuOpened ? 'visible' : 'hidden'}
+      initial='hidden'
       variants={variants}
     >
-      <section>
-        
-      </section>
-    </StyledNav>
+      <StyledSection
+        variants={child}
+      >
+        <SearchBar />
+      </StyledSection>
+    </StyledDiv>
   )
   
 }
