@@ -12,12 +12,18 @@ declare module "styled-components" {
       accent: string;
       divider: string;
       shadow: string;
+      shadowMenu: string
       generalBg: string;
     };
 
     sizes: {
       headerHeight: string;
       sideMenu: string;
+      sideMenuShadow: string;
     };
+
+    animation: {
+      duration: number;
+    }
   }
 }
