@@ -10,7 +10,7 @@ const ThemeSwitcherBtn = (): JSX.Element => {
   const theme = useTheme()
 
   const hoverTap = {
-    scale: 1.25,
+    scale: 1,
     transition: { duration: theme.animation.normal },
     backgroundColor: theme.colors.terciary
   }
