@@ -11,7 +11,9 @@ const Providers = ({children}: IReactChildren) => {
       <ToggleThemeContext.Consumer>
         {
           (value) => (
-            <ThemeProvider theme={value.themeType === 'light' ? light : dark}>
+            <ThemeProvider
+              theme={value.themeType === 'light' ? light : dark}
+            >
               <ToggleMenuProvider>
                 {children}
               </ToggleMenuProvider>
