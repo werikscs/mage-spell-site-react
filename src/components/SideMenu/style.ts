@@ -1,14 +1,7 @@
 import styled from "styled-components";
 import { motion } from 'framer-motion'
 
-const variants = {
-  visible: { width: '270px', transition: { duration: 0.25 } },
-  hidden: { width: 0 }
-};
-
-const StyledNav = styled(motion.nav).attrs(() => ({
-  initial: 'hidden', variants })
-)`
+const StyledNav = styled(motion.nav)`
   position: absolute;
   top: 0px;
   right: 0;
@@ -16,7 +9,7 @@ const StyledNav = styled(motion.nav).attrs(() => ({
 
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
 
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.shadowMenu};
 
   box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
 `;
