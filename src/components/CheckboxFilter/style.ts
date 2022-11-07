@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const StyledSection = styled(motion.section)`
+export const StyledSection = styled(motion.section)`
   display: flex;
   flex-direction: column;
 
@@ -18,22 +18,24 @@ const StyledSection = styled(motion.section)`
     cursor: pointer;
 
     > span {
+      color: ${({theme}) => theme.colors.text};
+
       font-weight: bold;
-    }
-  }
-
-  > ul {
-    display: flex;
-    flex-direction: column;
-
-    > li {
-      padding: 7px 16px;
-
-      border-top: 1px solid ${({theme}) => theme.colors.divider};
-
-      cursor: pointer;
     }
   }
 `
 
-export default StyledSection
+export const StyledUl = styled(motion.ul)`
+  display: flex;
+  flex-direction: column;
+
+  > li {
+    padding: 7px 16px;
+
+    border-top: 1px solid ${({theme}) => theme.colors.divider};
+
+    color: ${({theme}) => theme.colors.text};
+
+    cursor: pointer;
+  }
+`
