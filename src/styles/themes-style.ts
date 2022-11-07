@@ -12,14 +12,19 @@ export const light: DefaultTheme = {
     shadow: "#6D90A675",
     shadowMenu: "#394D5950",
     generalBg: "#C1D2D9",
+    transparent: "rgba(0,0,0,0)"
+    
   },
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '320px'
+    sideMenuShadow: '100%',
+    maxMobileScreen: 1024
   },
   animation: {
-    duration: 0.25
+    fast: 0.1,
+    normal: 0.25,
+    slow: 0.75
   }
 };
 
@@ -35,13 +40,17 @@ export const dark: DefaultTheme = {
     shadow: "#00000050",
     shadowMenu: "#1F1F1F75",
     generalBg: "#121212",
+    transparent: "rgba(0,0,0,0)"
   },
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '320px'
+    sideMenuShadow: '100%',
+    maxMobileScreen: 1024
   },
   animation: {
-    duration: 0.25
+    fast: 0.1,
+    normal: 0.25,
+    slow: 0.5
   }
 };

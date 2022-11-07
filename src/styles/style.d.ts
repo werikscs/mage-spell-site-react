@@ -14,16 +14,20 @@ declare module "styled-components" {
       shadow: string;
       shadowMenu: string
       generalBg: string;
+      transparent: string
     };
 
     sizes: {
       headerHeight: string;
       sideMenu: string;
       sideMenuShadow: string;
+      maxMobileScreen: number;
     };
 
     animation: {
-      duration: number;
+      fast: number;
+      normal: number;
+      slow: number;
     }
   }
 }

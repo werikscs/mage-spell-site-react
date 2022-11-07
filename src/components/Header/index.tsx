@@ -5,9 +5,13 @@ import MenuButton from '../MenuButton'
 import logoLight from '../../assets/logo-light.svg'
 import logoDark from '../../assets/logo-dark.svg'
 import { StyledHeader, StyledNavHeader } from './style'
+import WindowSizeContext from '../../context/WindowSizeContext'
+import { useTheme } from 'styled-components'
 
 const Header = (): JSX.Element => {
   const {themeType} = useContext(ToggleThemeContext)
+  const {width} = useContext(WindowSizeContext)
+  const theme = useTheme()
   
   return (
     <StyledHeader>
@@ -19,7 +23,7 @@ const Header = (): JSX.Element => {
       </a>
       <StyledNavHeader>
         <ThemeSwitcherButton />
-        <MenuButton />
+        { width <= theme.sizes.maxMobileScreen && <MenuButton /> }
       </StyledNavHeader>
     </StyledHeader>
   )

@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     border: 0;
     list-style: none;
     -webkit-tap-highlight-color: transparent;
+    font-family: 'Inter', sans-serif;
   }
   body{
     min-width: 320px;
