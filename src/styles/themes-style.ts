@@ -18,7 +18,8 @@ export const light: DefaultTheme = {
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '100%'
+    sideMenuShadow: '100%',
+    maxMobileScreen: 1024
   },
   animation: {
     fast: 0.1,
@@ -44,7 +45,8 @@ export const dark: DefaultTheme = {
   sizes: {
     headerHeight: "60px",
     sideMenu: '270px',
-    sideMenuShadow: '100%'
+    sideMenuShadow: '100%',
+    maxMobileScreen: 1024
   },
   animation: {
     fast: 0.1,

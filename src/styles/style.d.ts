@@ -21,6 +21,7 @@ declare module "styled-components" {
       headerHeight: string;
       sideMenu: string;
       sideMenuShadow: string;
+      maxMobileScreen: number;
     };
 
     animation: {
