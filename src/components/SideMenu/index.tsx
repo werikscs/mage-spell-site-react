@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { useTheme } from "styled-components"
 import ToggleMenuContext from "../../context/ToggleMenuContext"
 import WindowSizeContext from "../../context/WindowSizeContext"
+import CheckboxFilter from "../CheckboxFilter"
 import Divider from "../Divider"
 import SearchBar from "../SearchBar"
 import {StyledDiv} from "./style"
@@ -56,6 +57,7 @@ const SideMenu = (): JSX.Element => {
       >
         <SearchBar />
         <Divider />
+        <CheckboxFilter />
       </StyledSection>
     </StyledDiv>
   )
