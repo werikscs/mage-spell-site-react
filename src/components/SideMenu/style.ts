@@ -29,6 +29,10 @@ const StyledDiv = styled(motion.div)`
   `;
 
 const StyledSection = styled(motion.section)`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
   width: 100%;
   max-width: ${({ theme }) => theme.sizes.sideMenu};
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});

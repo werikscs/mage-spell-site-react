@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import ToggleThemeContext from '../../context/ToggleThemeContext'
+import WindowSizeContext from '../../context/WindowSizeContext'
 import ThemeSwitcherButton from '../ToggleThemeButton'
 import MenuButton from '../MenuButton'
-import logoLight from '../../assets/logo-light.svg'
-import logoDark from '../../assets/logo-dark.svg'
-import { StyledHeader, StyledNavHeader } from './style'
-import WindowSizeContext from '../../context/WindowSizeContext'
 import { useTheme } from 'styled-components'
+import { StyledHeader, StyledNavHeader } from './style'
+import logoDark from '../../assets/logo-dark.svg'
+import logoLight from '../../assets/logo-light.svg'
 
 const Header = (): JSX.Element => {
   const {themeType} = useContext(ToggleThemeContext)
