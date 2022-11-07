@@ -5,7 +5,7 @@ const StyledDiv = styled(motion.div)`
   ${({theme}) => innerWidth <= theme.sizes.maxMobileScreen ? (
     css`
       position: absolute;
-      top: 0px;
+      top: ${({theme}) => theme.sizes.headerHeight};
       right: 0;
       z-index: 0;
 
@@ -15,6 +15,7 @@ const StyledDiv = styled(motion.div)`
     css`
       position: static;
       margin-left: auto;
+      margin-top: ${({theme}) => theme.sizes.headerHeight};
 
       width: ${({ theme }) => theme.sizes.sideMenu};
     `
