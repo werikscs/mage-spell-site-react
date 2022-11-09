@@ -21,8 +21,6 @@
     "vite.config.ts",
     ".eslintrc.cjs",
     "src"],
-  "files": [
-    "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx",
-  ],
+  "files": [],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
