@@ -11,7 +11,7 @@ interface ISearchIcon {
   onClick: () => void;
 }
 
-function SearchIcon({ onClick }: ISearchIcon) {
+function SearchIcon({ onClick }: ISearchIcon): JSX.Element {
   const [theme, inverseTheme] = useTheme();
 
   const [isHoveringOrTouching, setIsHoveringOrTouching] =

@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 import { StyledSection, StyledUl } from './style';
 import ExpandArrow from '../../assets/expand-arrow.svg';
 
-function CheckboxFilter() {
+function CheckboxFilter(): JSX.Element {
   const theme = useTheme();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
