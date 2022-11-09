@@ -21,6 +21,7 @@ export const StyledSection = styled(motion.section)`
       color: ${({theme}) => theme.colors.text};
 
       font-weight: bold;
+      font-size: 14px;
     }
   }
 `
@@ -35,6 +36,8 @@ export const StyledUl = styled(motion.ul)`
     border-top: 1px solid ${({theme}) => theme.colors.divider};
 
     color: ${({theme}) => theme.colors.text};
+
+    font-size: 13px;
 
     cursor: pointer;
   }

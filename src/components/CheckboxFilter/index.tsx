@@ -11,11 +11,13 @@ const CheckboxFilter = () => {
     hidden: {
       height: 0,
       opacity: 0,
+      display: "none",
       transition: { duration: theme.animation.fast }
     },
     visible: {
       height: 'fit-content',
       opacity: 1,
+      display: "flex",
       transition: { duration: theme.animation.fast }
     }
   }
@@ -26,7 +28,7 @@ const CheckboxFilter = () => {
       initial="hidden"
     >
       <div onClick={() => setIsExpanded(!isExpanded)}>
-        <span>Degrees</span>
+        <span>Degree</span>
         <img src={ExpandArrow} alt="" />
       </div>
       <StyledUl
