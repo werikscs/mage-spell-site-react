@@ -18,10 +18,11 @@
   },
   "exclude": ["node_modules"],
   "include": [
+    "vite.config.ts",
     ".eslintrc.cjs",
     "src"],
   "files": [
-    "src/styles/style.d.ts"
+    "src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx",
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
