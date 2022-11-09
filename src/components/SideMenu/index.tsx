@@ -50,6 +50,7 @@ function SideMenu(): JSX.Element {
       animate={handleResize()}
       initial={handleResize()}
       variants={variants}
+      width={width}
     >
       <StyledSection variants={child}>
         <SearchBar />

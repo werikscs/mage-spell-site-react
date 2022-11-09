@@ -1,23 +1,27 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 
-const StyledDiv = styled(motion.div)`
-  ${({ theme }) =>
-    innerWidth <= theme.sizes.maxMobileScreen
+interface IWidth {
+  width: number;
+}
+
+const StyledDiv = styled(motion.div)<IWidth>`
+  ${({ theme, width }) =>
+    width <= theme.sizes.maxMobileScreen
       ? css`
           position: absolute;
-          top: theme.sizes.headerHeight;
+          top: ${theme.sizes.headerHeight};
           right: 0;
           z-index: 0;
 
-          width: theme.sizes.sideMenuShadow;
+          width: ${theme.sizes.sideMenuShadow};
         `
       : css`
           position: static;
           margin-left: auto;
-          margin-top: theme.sizes.headerHeight;
+          margin-top: ${theme.sizes.headerHeight};
 
-          width: theme.sizes.sideMenu;
+          width: ${theme.sizes.sideMenu};
         `}
 
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
