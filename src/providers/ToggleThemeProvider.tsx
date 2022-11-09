@@ -11,12 +11,7 @@ function ToogleThemeProvider({ children }: IReactChildren) {
   };
 
   return (
-    <ToggleThemeContext.Provider
-      value={{
-        themeType,
-        toggleTheme,
-      }}
-    >
+    <ToggleThemeContext.Provider value={{ themeType, toggleTheme }}>
       {children}
     </ToggleThemeContext.Provider>
   );
