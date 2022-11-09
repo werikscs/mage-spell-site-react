@@ -17,7 +17,9 @@
     "jsx": "react-jsx"
   },
   "exclude": ["node_modules"],
-  "include": ["src"],
+  "include": [
+    ".eslintrc.cjs",
+    "src"],
   "files": [
     "src/styles/style.d.ts"
   ],
