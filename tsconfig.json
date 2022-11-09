@@ -17,9 +17,10 @@
     "jsx": "react-jsx"
   },
   "exclude": ["node_modules"],
-  "include": ["src"],
-  "files": [
-    "src/styles/style.d.ts"
-  ],
+  "include": [
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    "src"],
+  "files": [],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

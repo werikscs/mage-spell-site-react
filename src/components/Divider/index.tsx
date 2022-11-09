@@ -1,7 +1,7 @@
-import StyledDivider from "./style"
+import StyledDivider from './style';
 
-const Divider = () => {
-  return <StyledDivider></StyledDivider>
+function Divider() {
+  return <StyledDivider />;
 }
 
-export default Divider
+export default Divider;

@@ -1,5 +1,5 @@
-import { motion } from "framer-motion"
-import styled from "styled-components"
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 const StyledDiv = styled(motion.div)`
   width: 100%;
@@ -12,9 +12,9 @@ const StyledDiv = styled(motion.div)`
   gap: 4px;
 
   border-radius: 8px;
-  border: 1px solid ${({theme}) => theme.colors.text};
+  border: 1px solid ${({ theme }) => theme.colors.text};
 
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 
   > input {
     width: 100%;
@@ -22,14 +22,14 @@ const StyledDiv = styled(motion.div)`
     padding: 7px 0;
     padding-left: 8px;
 
-    color: ${({theme}) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
 
-    ::placeholder{
-      color: ${({theme}) => theme.colors.text};
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.text};
     }
 
     background-color: transparent;
   }
-`
+`;
 
-export default StyledDiv
+export default StyledDiv;

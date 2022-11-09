@@ -1,47 +1,44 @@
-import { 
+import { useContext, useEffect, useState } from 'react';
+import {
   StyledDiv,
   StyledIcon,
   StyledIconPath,
-  StyledIconPathBar
-} from "./style"
-import ToggleThemeContext from "../../../context/ToggleThemeContext"
-import { useContext, useEffect, useState } from "react"
-import { dark, light } from "../../../styles/themes-style"
+  StyledIconPathBar,
+} from './style';
+import ToggleThemeContext from '../../../context/ToggleThemeContext';
+import { dark, light } from '../../../styles/themes-style';
 
 interface ISearchIcon {
-  onClick: () => void
+  onClick: () => void;
 }
 
-const SearchIcon = ({onClick}:ISearchIcon ) => {
-  const {themeType} = useContext(ToggleThemeContext)
+function SearchIcon({ onClick }: ISearchIcon) {
+  const { themeType } = useContext(ToggleThemeContext);
 
-  const [theme, setTheme] = useState(themeType === 'light' ? light : dark)
-  const [inverseTheme, setInverseTheme] = useState(themeType === 'light' ? dark : light)
-  const [tempTheme, setTempTheme] = useState(themeType === 'light' ? light : dark)
+  const [theme, setTheme] = useState(themeType === 'light' ? light : dark);
 
-  useEffect( () => {
-    setInverseTheme(themeType === 'light' ? dark : light)    
-  }, [themeType])
+  const [tempTheme, setTempTheme] = useState(
+    themeType === 'light' ? light : dark
+  );
 
-  useEffect( () => {
-    setTheme(themeType === 'light' ? light : dark)
-  }, [themeType])
+  useEffect(() => {
+    setTheme(themeType === 'light' ? light : dark);
+  }, [themeType]);
 
-  useEffect( () => {
-    setTempTheme(themeType === 'light' ? light : dark)
-  }, [themeType])
+  useEffect(() => {
+    setTempTheme(themeType === 'light' ? light : dark);
+  }, [themeType]);
 
   const divHover = {
     normal: {
       transition: { duration: theme.animation.fast },
       backgroundColor: theme.colors.transparent,
-
     },
     hoverTap: {
       transition: { duration: theme.animation.fast },
-      backgroundColor: theme.colors.text
-    }
-  }
+      backgroundColor: theme.colors.text,
+    },
+  };
 
   return (
     <StyledDiv
@@ -52,7 +49,7 @@ const SearchIcon = ({onClick}:ISearchIcon ) => {
       whileHover="hoverTap"
       whileTap="hoverTap"
       variants={divHover}
-      onClick={() => console.log('search')}
+      onClick={onClick}
     >
       <StyledIcon
         width="17"
@@ -74,7 +71,7 @@ const SearchIcon = ({onClick}:ISearchIcon ) => {
         />
       </StyledIcon>
     </StyledDiv>
-  )
+  );
 }
 
-export default SearchIcon
+export default SearchIcon;

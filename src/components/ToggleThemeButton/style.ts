@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import {motion} from "framer-motion";
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const StyledButton = styled(motion.button)`
+const StyledButton = styled(motion.button)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,3 +14,5 @@ export const StyledButton = styled(motion.button)`
 
   background-color: transparent;
 `;
+
+export default StyledButton;

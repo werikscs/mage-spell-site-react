@@ -1,6 +1,6 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface DefaultTheme {
     theme: string;
 
@@ -12,9 +12,9 @@ declare module "styled-components" {
       accent: string;
       divider: string;
       shadow: string;
-      shadowMenu: string
+      shadowMenu: string;
       generalBg: string;
-      transparent: string
+      transparent: string;
     };
 
     sizes: {
@@ -28,6 +28,6 @@ declare module "styled-components" {
       fast: number;
       normal: number;
       slow: number;
-    }
+    };
   }
 }
