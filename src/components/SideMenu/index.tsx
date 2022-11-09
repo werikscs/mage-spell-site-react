@@ -13,28 +13,28 @@ function SideMenu(): JSX.Element {
   const theme = useTheme();
 
   const variants = {
-    visible: {
-      opacity: 1,
+    hidden: {
+      opacity: 0,
       width: theme.sizes.sideMenuShadow,
       transition: { duration: 0.25 },
     },
-    hidden: {
-      opacity: 0,
+    visible: {
+      opacity: 1,
       width: theme.sizes.sideMenuShadow,
       transition: { duration: 0.25 },
     },
     none: { opacity: 1, width: theme.sizes.sideMenu },
   };
 
-  const child = {
+  const childVariants = {
     hidden: {
       display: 'none',
-      width: 0,
+      width: '0',
       transition: { duration: theme.animation.fast },
     },
     visible: {
       display: 'flex',
-      width: theme.sizes.sideMenu,
+      width: '100%',
       transition: { duration: theme.animation.fast },
     },
     none: { display: 'flex', width: theme.sizes.sideMenu },
@@ -52,7 +52,7 @@ function SideMenu(): JSX.Element {
       variants={variants}
       width={width}
     >
-      <StyledSection variants={child}>
+      <StyledSection variants={childVariants}>
         <SearchBar />
         <Divider />
         <CheckboxFilter />

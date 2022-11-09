@@ -7,21 +7,21 @@ interface IWidth {
 
 const StyledDiv = styled(motion.div)<IWidth>`
   ${({ theme, width }) =>
-    width <= theme.sizes.maxMobileScreen
+    width > theme.sizes.maxMobileScreen
       ? css`
+          position: static;
+          margin-left: auto;
+          margin-top: ${theme.sizes.headerHeight};
+
+          width: ${theme.sizes.sideMenu};
+        `
+      : css`
           position: absolute;
           top: ${theme.sizes.headerHeight};
           right: 0;
           z-index: 0;
 
           width: ${theme.sizes.sideMenuShadow};
-        `
-      : css`
-          position: static;
-          margin-left: auto;
-          margin-top: ${theme.sizes.headerHeight};
-
-          width: ${theme.sizes.sideMenu};
         `}
 
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
@@ -34,7 +34,6 @@ const StyledSection = styled(motion.section)`
   flex-direction: column;
   gap: 12px;
 
-  width: 100%;
   max-width: ${({ theme }) => theme.sizes.sideMenu};
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
 
