@@ -1,26 +1,25 @@
-import { useState } from "react"
-import ToggleThemeContext from "../context/ToggleThemeContext"
-import { IReactChildren } from "../interfaces-types/interfaces"
-import { ThemeTypes } from "../interfaces-types/types"
+import { useState } from 'react';
+import ToggleThemeContext from '../context/ToggleThemeContext';
+import { IReactChildren } from '../interfaces-types/interfaces';
+import { ThemeTypes } from '../interfaces-types/types';
 
-const ToogleThemeProvider = ({children}: IReactChildren) => {
-
-  const [themeType, setTheme] = useState<ThemeTypes>('light')
+function ToogleThemeProvider({ children }: IReactChildren) {
+  const [themeType, setTheme] = useState<ThemeTypes>('light');
 
   const toggleTheme = () => {
-    setTheme(() => themeType === 'light' ? 'dark' : "light")
-  }
+    setTheme(() => (themeType === 'light' ? 'dark' : 'light'));
+  };
 
   return (
     <ToggleThemeContext.Provider
       value={{
         themeType,
-        toggleTheme
+        toggleTheme,
       }}
     >
       {children}
     </ToggleThemeContext.Provider>
-  )
+  );
 }
 
-export default ToogleThemeProvider
+export default ToogleThemeProvider;

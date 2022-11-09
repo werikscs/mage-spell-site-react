@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import styled from "styled-components";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 export const StyledSection = styled(motion.section)`
   display: flex;
@@ -7,7 +7,7 @@ export const StyledSection = styled(motion.section)`
 
   border-radius: 8px;
 
-  background-color: ${({theme}) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 
   > div {
     display: flex;
@@ -18,13 +18,13 @@ export const StyledSection = styled(motion.section)`
     cursor: pointer;
 
     > span {
-      color: ${({theme}) => theme.colors.text};
+      color: ${({ theme }) => theme.colors.text};
 
       font-weight: bold;
       font-size: 14px;
     }
   }
-`
+`;
 
 export const StyledUl = styled(motion.ul)`
   display: flex;
@@ -33,12 +33,12 @@ export const StyledUl = styled(motion.ul)`
   > li {
     padding: 7px 16px;
 
-    border-top: 1px solid ${({theme}) => theme.colors.divider};
+    border-top: 1px solid ${({ theme }) => theme.colors.divider};
 
-    color: ${({theme}) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.text};
 
     font-size: 13px;
 
     cursor: pointer;
   }
-`
+`;

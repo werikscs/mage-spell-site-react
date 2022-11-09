@@ -1,12 +1,12 @@
-import SideMenu from "../../components/SideMenu"
-import StyledMain from "./style"
+import SideMenu from '../../components/SideMenu';
+import StyledMain from './style';
 
-const MainPage = (): JSX.Element => {
+function MainPage(): JSX.Element {
   return (
     <StyledMain>
       <SideMenu />
     </StyledMain>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;
