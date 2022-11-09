@@ -12,14 +12,20 @@ const StyledDiv = styled(motion.div)`
   gap: 4px;
 
   border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.text};
+  outline: 1px solid transparent;
+
+  transition: outline ${({ theme }) => theme.animation.fast}s;
 
   background-color: ${({ theme }) => theme.colors.primary};
 
+  :focus-within {
+    outline-color: ${({ theme }) => theme.colors.text};
+  }
+
   > input {
     width: 100%;
+    height: 100%;
 
-    padding: 7px 0;
     padding-left: 8px;
 
     color: ${({ theme }) => theme.colors.text};
