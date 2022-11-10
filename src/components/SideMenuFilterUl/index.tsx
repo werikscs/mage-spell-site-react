@@ -1,10 +1,10 @@
 import useCustomTheme from '../../hooks/useCustomTheme';
-import { IFilterLi } from '../../utils/componentData';
+import { IFilterLiArray } from '../../utils/componentData';
 import CheckboxFilterLi from '../CheckBoxFIlterLi';
 import StyledUl from './style';
 
 interface ISideMenuFilerUl {
-  dataArray: IFilterLi[];
+  dataArray: IFilterLiArray[];
 }
 
 function SideMenuFilterUl({ dataArray }: ISideMenuFilerUl): JSX.Element {
@@ -32,6 +32,7 @@ function SideMenuFilterUl({ dataArray }: ISideMenuFilerUl): JSX.Element {
           key={data.id}
           title={data.title}
           otherText={data.otherText}
+          hasCheckbox={data.hasCheckbox}
         />
       ))}
     </StyledUl>

@@ -1,12 +1,13 @@
 import { useContext } from 'react';
-
 import ToggleMenuContext from '../../context/ToggleMenuContext';
 import WindowSizeContext from '../../context/WindowSizeContext';
 import useCustomTheme from '../../hooks/useCustomTheme';
-import CheckboxFilter from '../CheckboxFilter';
 import Divider from '../Divider';
 import SearchBar from '../SearchBar';
 import { StyledDiv, StyledSection } from './style';
+import { arcanasDdata, degreesData } from '../../utils/componentData';
+import ExpandableElement from '../ExpandableElement';
+import SideMenuFilterUl from '../SideMenuFilterUl';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
@@ -56,7 +57,12 @@ function SideMenu(): JSX.Element {
       <StyledSection variants={childVariants}>
         <SearchBar />
         <Divider />
-        <CheckboxFilter title="Degrees" />
+        <ExpandableElement title="Arcanas">
+          <SideMenuFilterUl dataArray={arcanasDdata} />
+        </ExpandableElement>
+        <ExpandableElement title="Degrees">
+          <SideMenuFilterUl dataArray={degreesData} />
+        </ExpandableElement>
       </StyledSection>
     </StyledDiv>
   );
