@@ -1,31 +1,15 @@
 import { useState } from 'react';
-import { StyledDiv, StyledSection, StyledUl } from './style';
+import { StyledDiv, StyledSection } from './style';
 import ArrowIcon from '../Icons/ArrowIcon';
-import useCustomTheme from '../../hooks/useCustomTheme';
-import CheckboxFilterLi from '../CheckBoxFIlterLi';
+import SideMenuFilterUl from '../SideMenuFilterUl';
+import degreesData from '../../utils/ulData';
 
 interface ICheckboxFilter {
   title: string;
 }
 
 function CheckboxFilter({ title }: ICheckboxFilter): JSX.Element {
-  const { theme } = useCustomTheme();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
-  const childVariants = {
-    hidden: {
-      height: 0,
-      opacity: 0,
-      display: 'none',
-      transition: { duration: theme.animation.fast },
-    },
-    visible: {
-      height: 'fit-content',
-      opacity: 1,
-      display: 'flex',
-      transition: { duration: theme.animation.fast },
-    },
-  };
 
   return (
     <StyledSection animate={isExpanded ? 'visible' : 'hidden'} initial="hidden">
@@ -33,13 +17,7 @@ function CheckboxFilter({ title }: ICheckboxFilter): JSX.Element {
         <span>{title}</span>
         <ArrowIcon isExpanded={isExpanded} />
       </StyledDiv>
-      <StyledUl variants={childVariants}>
-        <CheckboxFilterLi title="Initiate" otherText="•" />
-        <CheckboxFilterLi title="Apprentice" otherText="••" />
-        <CheckboxFilterLi title="Disciple" otherText="•••" />
-        <CheckboxFilterLi title="Adept" otherText="••••" />
-        <CheckboxFilterLi title="Master" otherText="•••••" />
-      </StyledUl>
+      <SideMenuFilterUl dataArray={degreesData} />
     </StyledSection>
   );
 }

@@ -25,8 +25,3 @@ export const StyledDiv = styled(motion.div)`
     font-size: 14px;
   }
 `;
-
-export const StyledUl = styled(motion.ul)`
-  display: flex;
-  flex-direction: column;
-`;
