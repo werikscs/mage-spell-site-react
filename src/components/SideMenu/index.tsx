@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import { useTheme } from 'styled-components';
+
 import ToggleMenuContext from '../../context/ToggleMenuContext';
 import WindowSizeContext from '../../context/WindowSizeContext';
+import useCustomTheme from '../../hooks/useCustomTheme';
 import CheckboxFilter from '../CheckboxFilter';
 import Divider from '../Divider';
 import SearchBar from '../SearchBar';
@@ -10,7 +11,7 @@ import { StyledDiv, StyledSection } from './style';
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
   const { width } = useContext(WindowSizeContext);
-  const theme = useTheme();
+  const { theme } = useCustomTheme();
 
   const variants = {
     hidden: {
