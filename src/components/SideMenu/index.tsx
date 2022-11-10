@@ -55,7 +55,7 @@ function SideMenu(): JSX.Element {
       <StyledSection variants={childVariants}>
         <SearchBar />
         <Divider />
-        <CheckboxFilter />
+        <CheckboxFilter title="Degrees" />
       </StyledSection>
     </StyledDiv>
   );
