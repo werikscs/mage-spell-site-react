@@ -29,16 +29,4 @@ export const StyledDiv = styled(motion.div)`
 export const StyledUl = styled(motion.ul)`
   display: flex;
   flex-direction: column;
-
-  > li {
-    padding: 7px 16px;
-
-    border-top: 1px solid ${({ theme }) => theme.colors.divider};
-
-    color: ${({ theme }) => theme.colors.text};
-
-    font-size: 13px;
-
-    cursor: pointer;
-  }
 `;

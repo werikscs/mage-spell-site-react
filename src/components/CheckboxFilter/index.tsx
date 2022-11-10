@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyledDiv, StyledSection, StyledUl } from './style';
 import ArrowIcon from '../Icons/ArrowIcon';
 import useCustomTheme from '../../hooks/useCustomTheme';
+import CheckboxFilterLi from '../CheckBoxFIlterLi';
 
 interface ICheckboxFilter {
   title: string;
@@ -33,17 +34,11 @@ function CheckboxFilter({ title }: ICheckboxFilter): JSX.Element {
         <ArrowIcon isExpanded={isExpanded} />
       </StyledDiv>
       <StyledUl variants={childVariants}>
-        <li>
-          <span>All</span>
-        </li>
-        <li>
-          <img src="" alt="" />
-          <span>Initiate</span>
-        </li>
-        <li>Apprentice</li>
-        <li>Disciple</li>
-        <li>Adept</li>
-        <li>Master</li>
+        <CheckboxFilterLi title="Initiate" otherText="•" />
+        <CheckboxFilterLi title="Apprentice" otherText="••" />
+        <CheckboxFilterLi title="Disciple" otherText="•••" />
+        <CheckboxFilterLi title="Adept" otherText="••••" />
+        <CheckboxFilterLi title="Master" otherText="•••••" />
       </StyledUl>
     </StyledSection>
   );
