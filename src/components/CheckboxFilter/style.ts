@@ -8,21 +8,21 @@ export const StyledSection = styled(motion.section)`
   border-radius: 8px;
 
   background-color: ${({ theme }) => theme.colors.primary};
+`;
 
-  > div {
-    display: flex;
-    justify-content: space-between;
+export const StyledDiv = styled(motion.div)`
+  display: flex;
+  justify-content: space-between;
 
-    padding: 7px 16px;
+  padding: 7px 12px;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    > span {
-      color: ${({ theme }) => theme.colors.text};
+  > span {
+    color: ${({ theme }) => theme.colors.text};
 
-      font-weight: bold;
-      font-size: 14px;
-    }
+    font-weight: 600;
+    font-size: 14px;
   }
 `;
 
