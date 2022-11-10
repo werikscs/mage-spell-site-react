@@ -3,9 +3,8 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled(motion.div)`
   display: flex;
-  width: fit-content;
 
-  padding: 6px 8px;
+  padding: 6.5px 12px;
 
   border-top-right-radius: 7px;
   border-end-end-radius: 7px;

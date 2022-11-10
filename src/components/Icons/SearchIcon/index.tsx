@@ -5,14 +5,14 @@ import {
   StyledIconPath,
   StyledIconPathBar,
 } from './style';
-import useTheme from '../../../hooks/useTheme.hook';
+import useTheme from '../../../hooks/useCustomTheme';
 
 interface ISearchIcon {
   onClick: () => void;
 }
 
 function SearchIcon({ onClick }: ISearchIcon): JSX.Element {
-  const [theme, inverseTheme] = useTheme();
+  const { theme, inverseTheme } = useTheme();
 
   const [isHoveringOrTouching, setIsHoveringOrTouching] =
     useState<boolean>(false);
