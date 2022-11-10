@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 const StyledDiv = styled(motion.div)`
   width: 100%;
-  height: fit-content;
-  max-height: 30px;
+  height: ${({ theme }) => theme.sizes.genericElementHeight};
 
   display: flex;
   justify-content: space-between;
@@ -26,7 +25,9 @@ const StyledDiv = styled(motion.div)`
     width: 100%;
     height: 100%;
 
-    padding-left: 8px;
+    flex: 1;
+
+    padding-left: 12px;
 
     color: ${({ theme }) => theme.colors.text};
 
