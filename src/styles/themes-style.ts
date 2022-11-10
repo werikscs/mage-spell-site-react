@@ -12,6 +12,7 @@ export const light: DefaultTheme = {
     shadow: '#6D90A675',
     shadowMenu: '#394D5950',
     generalBg: '#C1D2D9',
+    hover: '#C9D4DF',
     transparent: 'rgba(0,0,0,0)',
   },
   sizes: {
@@ -40,6 +41,7 @@ export const dark: DefaultTheme = {
     shadow: '#00000050',
     shadowMenu: '#1F1F1F75',
     generalBg: '#121212',
+    hover: '#4F4F4F',
     transparent: 'rgba(0,0,0,0)',
   },
   sizes: {

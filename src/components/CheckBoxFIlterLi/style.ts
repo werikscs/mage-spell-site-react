@@ -17,6 +17,10 @@ const StyledLi = styled(motion.li)`
 
   cursor: pointer;
 
+  :hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
+
   .li__name {
     margin-right: auto;
   }
