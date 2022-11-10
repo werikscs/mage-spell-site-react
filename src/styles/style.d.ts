@@ -2,7 +2,7 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    theme: string;
+    type: string;
 
     colors: {
       primary: string;
@@ -19,6 +19,7 @@ declare module 'styled-components' {
 
     sizes: {
       headerHeight: string;
+      genericElementHeight: string;
       sideMenu: string;
       sideMenuShadow: string;
       maxMobileScreen: number;

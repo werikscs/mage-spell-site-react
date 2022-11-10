@@ -1,13 +1,13 @@
 import { useContext } from 'react';
-import { useTheme } from 'styled-components';
-import changeThemeDarkIcon from '../../assets/change-theme-dark.svg';
-import changeThemeLightIcon from '../../assets/change-theme-light.svg';
 import ToggleThemeContext from '../../context/ToggleThemeContext';
+import useCustomTheme from '../../hooks/useCustomTheme';
+import ChangeToDarkThemeIcon from '../Icons/ChangeToDarkThemeIcon';
+import ChangeToLightThemeIcon from '../Icons/ChangeToLightThemeIcon';
 import StyledButton from './style';
 
 function ThemeSwitcherBtn(): JSX.Element {
-  const { themeType, toggleTheme } = useContext(ToggleThemeContext);
-  const theme = useTheme();
+  const { toggleTheme } = useContext(ToggleThemeContext);
+  const { theme } = useCustomTheme();
 
   const hoverTap = {
     scale: 1,
@@ -21,10 +21,11 @@ function ThemeSwitcherBtn(): JSX.Element {
       whileTap={hoverTap}
       onClick={toggleTheme}
     >
-      <img
-        src={themeType === 'light' ? changeThemeDarkIcon : changeThemeLightIcon}
-        alt=""
-      />
+      {theme.type === 'light' ? (
+        <ChangeToDarkThemeIcon />
+      ) : (
+        <ChangeToLightThemeIcon />
+      )}
     </StyledButton>
   );
 }

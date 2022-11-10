@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 export const light: DefaultTheme = {
-  theme: 'light',
+  type: 'light',
   colors: {
     primary: '#E9F0F2',
     secondary: '#FCFCFC',
@@ -16,6 +16,7 @@ export const light: DefaultTheme = {
   },
   sizes: {
     headerHeight: '60px',
+    genericElementHeight: '30px',
     sideMenu: '270px',
     sideMenuShadow: '100%',
     maxMobileScreen: 1024,
@@ -28,7 +29,7 @@ export const light: DefaultTheme = {
 };
 
 export const dark: DefaultTheme = {
-  theme: 'dark',
+  type: 'dark',
   colors: {
     primary: '#353535',
     secondary: '#1F1F1F',
@@ -43,6 +44,7 @@ export const dark: DefaultTheme = {
   },
   sizes: {
     headerHeight: '60px',
+    genericElementHeight: '30px',
     sideMenu: '270px',
     sideMenuShadow: '100%',
     maxMobileScreen: 1024,

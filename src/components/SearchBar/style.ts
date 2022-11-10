@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 const StyledDiv = styled(motion.div)`
   width: 100%;
-  height: fit-content;
-  max-height: 30px;
+  height: ${({ theme }) => theme.sizes.genericElementHeight};
 
   display: flex;
   justify-content: space-between;
@@ -12,15 +11,23 @@ const StyledDiv = styled(motion.div)`
   gap: 4px;
 
   border-radius: 8px;
-  border: 1px solid ${({ theme }) => theme.colors.text};
+  outline: 1px solid transparent;
+
+  transition: outline ${({ theme }) => theme.animation.fast}s;
 
   background-color: ${({ theme }) => theme.colors.primary};
 
+  :focus-within {
+    outline-color: ${({ theme }) => theme.colors.text};
+  }
+
   > input {
     width: 100%;
+    height: 100%;
 
-    padding: 7px 0;
-    padding-left: 8px;
+    flex: 1;
+
+    padding-left: 12px;
 
     color: ${({ theme }) => theme.colors.text};
 

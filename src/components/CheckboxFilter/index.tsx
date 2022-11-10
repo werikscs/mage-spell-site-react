@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { useTheme } from 'styled-components';
-import { StyledSection, StyledUl } from './style';
-import ExpandArrow from '../../assets/expand-arrow.svg';
+import { StyledDiv, StyledSection, StyledUl } from './style';
+import ArrowIcon from '../Icons/ArrowIcon';
+import useCustomTheme from '../../hooks/useCustomTheme';
 
-function CheckboxFilter() {
-  const theme = useTheme();
+interface ICheckboxFilter {
+  title: string;
+}
+
+function CheckboxFilter({ title }: ICheckboxFilter): JSX.Element {
+  const { theme } = useCustomTheme();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  const child = {
+  const childVariants = {
     hidden: {
       height: 0,
       opacity: 0,
@@ -24,11 +28,11 @@ function CheckboxFilter() {
 
   return (
     <StyledSection animate={isExpanded ? 'visible' : 'hidden'} initial="hidden">
-      <div onClick={() => setIsExpanded(!isExpanded)} aria-hidden="true">
-        <span>Degree</span>
-        <img src={ExpandArrow} alt="" />
-      </div>
-      <StyledUl variants={child}>
+      <StyledDiv onClick={() => setIsExpanded(!isExpanded)} aria-hidden="true">
+        <span>{title}</span>
+        <ArrowIcon isExpanded={isExpanded} />
+      </StyledDiv>
+      <StyledUl variants={childVariants}>
         <li>
           <span>All</span>
         </li>

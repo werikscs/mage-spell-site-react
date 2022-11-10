@@ -1,6 +1,6 @@
 import StyledDivider from './style';
 
-function Divider() {
+function Divider(): JSX.Element {
   return <StyledDivider />;
 }
 
