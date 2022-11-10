@@ -16,6 +16,7 @@ export const light: DefaultTheme = {
   },
   sizes: {
     headerHeight: '60px',
+    genericElementHeight: '30px',
     sideMenu: '270px',
     sideMenuShadow: '100%',
     maxMobileScreen: 1024,
@@ -43,6 +44,7 @@ export const dark: DefaultTheme = {
   },
   sizes: {
     headerHeight: '60px',
+    genericElementHeight: '30px',
     sideMenu: '270px',
     sideMenuShadow: '100%',
     maxMobileScreen: 1024,

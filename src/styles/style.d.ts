@@ -19,6 +19,7 @@ declare module 'styled-components' {
 
     sizes: {
       headerHeight: string;
+      genericElementHeight: string;
       sideMenu: string;
       sideMenuShadow: string;
       maxMobileScreen: number;
