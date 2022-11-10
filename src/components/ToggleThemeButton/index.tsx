@@ -21,7 +21,7 @@ function ThemeSwitcherBtn(): JSX.Element {
       whileTap={hoverTap}
       onClick={toggleTheme}
     >
-      {theme.theme === 'light' ? (
+      {theme.type === 'light' ? (
         <ChangeToDarkThemeIcon />
       ) : (
         <ChangeToLightThemeIcon />
