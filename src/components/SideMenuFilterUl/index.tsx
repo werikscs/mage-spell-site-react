@@ -1,5 +1,5 @@
 import useCustomTheme from '../../hooks/useCustomTheme';
-import { IFilterLi } from '../../utils/ulData';
+import { IFilterLi } from '../../utils/componentData';
 import CheckboxFilterLi from '../CheckBoxFIlterLi';
 import StyledUl from './style';
 

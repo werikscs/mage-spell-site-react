@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { StyledDiv, StyledSection } from './style';
 import ArrowIcon from '../Icons/ArrowIcon';
 import SideMenuFilterUl from '../SideMenuFilterUl';
-import degreesData from '../../utils/ulData';
+import degreesData from '../../utils/componentData';
 
 interface ICheckboxFilter {
   title: string;
