@@ -1,7 +1,5 @@
 import { useContext } from 'react';
-import { useTheme } from 'styled-components';
 import ToggleThemeContext from '../../context/ToggleThemeContext';
-import WindowSizeContext from '../../context/WindowSizeContext';
 import ThemeSwitcherButton from '../ToggleThemeButton';
 import MenuButton from '../MenuButton';
 import { StyledHeader, StyledNavHeader } from './style';
@@ -10,8 +8,6 @@ import logoLight from '../../assets/logo-light.svg';
 
 function Header(): JSX.Element {
   const { themeType } = useContext(ToggleThemeContext);
-  const { width } = useContext(WindowSizeContext);
-  const theme = useTheme();
 
   return (
     <StyledHeader>
@@ -23,7 +19,7 @@ function Header(): JSX.Element {
       </a>
       <StyledNavHeader>
         <ThemeSwitcherButton />
-        {width <= theme.sizes.maxMobileScreen && <MenuButton />}
+        <MenuButton />
       </StyledNavHeader>
     </StyledHeader>
   );

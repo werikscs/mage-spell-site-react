@@ -1,22 +1,22 @@
 import { useContext } from 'react';
-import { useTheme } from 'styled-components';
 import IconMenuDark from '../../assets/toggle-menu-dark.svg';
 import IconMenuLight from '../../assets/toggle-menu-light.svg';
 import ToggleMenuContext from '../../context/ToggleMenuContext';
-import ToggleThemeContext from '../../context/ToggleThemeContext';
+import WindowSizeContext from '../../context/WindowSizeContext';
+import useTheme from '../../hooks/useCustomTheme';
 import StyledButton from './style';
 
-function MenuButton(): JSX.Element {
+function MenuButton(): JSX.Element | null {
   const { isMenuOpened, toggleMenu } = useContext(ToggleMenuContext);
-  const { themeType } = useContext(ToggleThemeContext);
-  const theme = useTheme();
+  const { theme, themeType } = useTheme();
+  const { width } = useContext(WindowSizeContext);
 
   const variants = {
     opened: { scaleX: -1, transition: { duration: theme.animation.normal } },
     closed: { scaleX: 1, transition: { duration: theme.animation.normal } },
   };
 
-  return (
+  return width < theme.sizes.maxMobileScreen ? (
     <StyledButton
       animate={isMenuOpened ? 'opened' : 'closed'}
       variants={variants}
@@ -24,7 +24,7 @@ function MenuButton(): JSX.Element {
     >
       <img src={themeType === 'light' ? IconMenuLight : IconMenuDark} alt="" />
     </StyledButton>
-  );
+  ) : null;
 }
 
 export default MenuButton;
