@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { DefaultTheme } from 'styled-components';
 import ToggleThemeContext from '../context/ToggleThemeContext';
-import { ThemeTypes } from '../interfaces-types/types';
 import { dark, light } from '../styles/themes-style';
 
 interface IUseCustomTheme {
   theme: DefaultTheme;
   inverseTheme: DefaultTheme;
-  themeType: ThemeTypes;
 }
 
 function useCustomTheme(): IUseCustomTheme {
@@ -26,7 +24,7 @@ function useCustomTheme(): IUseCustomTheme {
     setInverseTheme(themeType === 'light' ? dark : light);
   }, [themeType]);
 
-  return { theme, inverseTheme, themeType };
+  return { theme, inverseTheme };
 }
 
 export default useCustomTheme;
