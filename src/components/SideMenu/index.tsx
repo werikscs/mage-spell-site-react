@@ -56,6 +56,7 @@ function SideMenu(): JSX.Element {
         <ExpandableElement title="Practices">
           <CheckboxFilter dataArray={practicesData} />
         </ExpandableElement>
+        <Divider />
       </StyledSection>
     </StyledDiv>
   );
