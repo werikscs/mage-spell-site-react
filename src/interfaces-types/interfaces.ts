@@ -12,5 +12,6 @@ export interface IToggleMenu {
 export interface IButton {
   title: string;
   icon?: ReactNode;
+  variant?: string;
   onClick: () => void;
 }
