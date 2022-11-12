@@ -24,7 +24,8 @@ const StyledDiv = styled(motion.div)<IWidth>`
           width: ${theme.sizes.sideMenuShadow};
         `}
 
-  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
+  min-height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
+  max-height: fit-content;
 
   background-color: ${({ theme }) => theme.colors.shadowMenu};
 `;
@@ -37,7 +38,8 @@ const StyledSection = styled(motion.section)`
   overflow-y: auto;
 
   max-width: ${({ theme }) => theme.sizes.sideMenu};
-  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
+  /* min-height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight}); */
+  min-height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
 
   margin-left: auto;
   padding: 16px;
@@ -45,6 +47,10 @@ const StyledSection = styled(motion.section)`
   box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
 
   background-color: ${({ theme }) => theme.colors.secondary};
+
+  .divider:last-of-type {
+    margin-top: auto;
+  }
 `;
 
 export { StyledDiv, StyledSection };
