@@ -1,17 +1,18 @@
 import { useContext } from 'react';
 import ToggleMenuContext from '../../context/ToggleMenuContext';
 import WindowSizeContext from '../../context/WindowSizeContext';
-import useCustomTheme from '../../hooks/useCustomTheme';
-import Divider from '../Divider';
-import SearchBar from '../SearchBar';
-import { StyledDiv, StyledSection } from './style';
 import {
   arcanasData,
   degreesData,
   practicesData,
 } from '../../utils/componentData';
+import useCustomTheme from '../../hooks/useCustomTheme';
+import Divider from '../Divider';
+import SearchBar from '../SearchBar';
+import { StyledDiv, StyledSection } from './style';
 import ExpandableElement from '../ExpandableElement';
 import CheckboxFilter from '../CheckboxFilter';
+import SideMenuButton from '../SideMenuButton';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
@@ -47,6 +48,10 @@ function SideMenu(): JSX.Element {
       <StyledSection>
         <SearchBar />
         <Divider />
+        <SideMenuButton
+          title="Most Favorited"
+          onClick={() => console.log('Most favorited')}
+        />
         <ExpandableElement title="Arcanas">
           <CheckboxFilter dataArray={arcanasData} />
         </ExpandableElement>
