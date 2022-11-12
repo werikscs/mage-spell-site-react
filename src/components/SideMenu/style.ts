@@ -34,6 +34,8 @@ const StyledSection = styled(motion.section)`
   flex-direction: column;
   gap: 12px;
 
+  overflow-y: auto;
+
   max-width: ${({ theme }) => theme.sizes.sideMenu};
   height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
 

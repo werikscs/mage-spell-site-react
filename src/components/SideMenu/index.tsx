@@ -1,12 +1,17 @@
 import { useContext } from 'react';
-
 import ToggleMenuContext from '../../context/ToggleMenuContext';
 import WindowSizeContext from '../../context/WindowSizeContext';
 import useCustomTheme from '../../hooks/useCustomTheme';
-import CheckboxFilter from '../CheckboxFilter';
 import Divider from '../Divider';
 import SearchBar from '../SearchBar';
 import { StyledDiv, StyledSection } from './style';
+import {
+  arcanasData,
+  degreesData,
+  practicesData,
+} from '../../utils/componentData';
+import ExpandableElement from '../ExpandableElement';
+import CheckboxFilter from '../CheckboxFilter';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
@@ -27,20 +32,6 @@ function SideMenu(): JSX.Element {
     none: { opacity: 1, width: theme.sizes.sideMenu },
   };
 
-  const childVariants = {
-    hidden: {
-      display: 'none',
-      width: '0',
-      transition: { duration: theme.animation.fast },
-    },
-    visible: {
-      display: 'flex',
-      width: '100%',
-      transition: { duration: theme.animation.fast },
-    },
-    none: { display: 'flex', width: theme.sizes.sideMenu },
-  };
-
   const handleResize = () => {
     if (width > theme.sizes.maxMobileScreen) return 'none';
     return isMenuOpened ? 'visible' : 'hidden';
@@ -53,10 +44,18 @@ function SideMenu(): JSX.Element {
       variants={variants}
       width={width}
     >
-      <StyledSection variants={childVariants}>
+      <StyledSection>
         <SearchBar />
         <Divider />
-        <CheckboxFilter title="Degrees" />
+        <ExpandableElement title="Arcanas">
+          <CheckboxFilter dataArray={arcanasData} />
+        </ExpandableElement>
+        <ExpandableElement title="Degrees">
+          <CheckboxFilter dataArray={degreesData} />
+        </ExpandableElement>
+        <ExpandableElement title="Practices">
+          <CheckboxFilter dataArray={practicesData} />
+        </ExpandableElement>
       </StyledSection>
     </StyledDiv>
   );

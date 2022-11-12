@@ -14,7 +14,11 @@ function ArrowIcon({ isExpanded }: IArrowIcon): JSX.Element {
   };
 
   return (
-    <StyledDiv animate={isExpanded ? 'expanded' : 'normal'} variants={variants}>
+    <StyledDiv
+      initial="normal"
+      animate={isExpanded ? 'expanded' : 'normal'}
+      variants={variants}
+    >
       <svg
         width="16"
         height="10"
