@@ -25,3 +25,5 @@ export const StyledDiv = styled(motion.div)`
     font-size: 14px;
   }
 `;
+
+export const StyledExpandableDiv = styled(motion.div)``;
