@@ -32,15 +32,15 @@ function SideMenu(): JSX.Element {
     none: { opacity: 1, width: theme.sizes.sideMenu },
   };
 
-  const handleResize = () => {
+  const handleScreenResize = () => {
     if (width > theme.sizes.maxMobileScreen) return 'none';
     return isMenuOpened ? 'visible' : 'hidden';
   };
 
   return (
     <StyledDiv
-      animate={handleResize()}
-      initial={handleResize()}
+      animate={handleScreenResize()}
+      initial={handleScreenResize()}
       variants={variants}
       width={width}
     >
@@ -56,6 +56,7 @@ function SideMenu(): JSX.Element {
         <ExpandableElement title="Practices">
           <CheckboxFilter dataArray={practicesData} />
         </ExpandableElement>
+        <Divider />
       </StyledSection>
     </StyledDiv>
   );
