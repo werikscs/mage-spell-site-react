@@ -7,7 +7,9 @@ const StyledLi = styled(motion.li)`
   align-items: center;
   gap: 16px;
 
-  padding: 7px 16px;
+  height: ${({ theme }) => theme.sizes.genericElementHeight};
+
+  padding: 7px 12px;
 
   border-top: 1px solid ${({ theme }) => theme.colors.divider};
 

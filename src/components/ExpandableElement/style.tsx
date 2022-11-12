@@ -14,6 +14,8 @@ export const StyledDiv = styled(motion.div)`
   display: flex;
   justify-content: space-between;
 
+  height: ${({ theme }) => theme.sizes.genericElementHeight};
+
   padding: 7px 12px;
 
   cursor: pointer;
