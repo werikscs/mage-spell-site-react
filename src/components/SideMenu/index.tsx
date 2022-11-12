@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ToggleMenuContext from '../../context/ToggleMenuContext';
 import WindowSizeContext from '../../context/WindowSizeContext';
 import {
@@ -14,13 +14,15 @@ import ExpandableElement from '../ExpandableElement';
 import CheckboxFilter from '../CheckboxFilter';
 import SideMenuButton from '../SideMenuButton';
 import StarIcon from '../Icons/StarIcon';
+import BookIcon from '../Icons/BookIcon';
+import QuestionIcon from '../Icons/QuestionIcon';
+import UserIcon from '../UserIcon';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
   const { width } = useContext(WindowSizeContext);
   const { theme } = useCustomTheme();
-
-  const isLogged = true;
+  const [isLogged, setIsLogged] = useState<boolean>(false);
 
   const variants = {
     hidden: {
@@ -66,10 +68,37 @@ function SideMenu(): JSX.Element {
         </ExpandableElement>
         <Divider />
         {isLogged && (
+          <>
+            <SideMenuButton
+              title="My Favorites"
+              onClick={() => console.log('My Favorites')}
+              icon={<StarIcon isFilled />}
+            />
+            <SideMenuButton
+              title="My Spells"
+              onClick={() => console.log('My Spells')}
+              icon={<BookIcon />}
+            />
+          </>
+        )}
+        <Divider />
+        <SideMenuButton
+          title="About"
+          onClick={() => console.log('About')}
+          icon={<QuestionIcon />}
+        />
+        {isLogged ? (
           <SideMenuButton
-            title="My Favorites"
-            onClick={() => console.log('My Favorites')}
-            icon={<StarIcon isFilled />}
+            title="Logout"
+            variant="login-logout-side-menu"
+            onClick={() => setIsLogged(false)}
+            icon={<UserIcon />}
+          />
+        ) : (
+          <SideMenuButton
+            title="Login"
+            variant="login-logout-side-menu"
+            onClick={() => setIsLogged(true)}
           />
         )}
       </StyledSection>
