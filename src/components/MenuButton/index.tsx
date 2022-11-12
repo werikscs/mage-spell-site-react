@@ -7,20 +7,11 @@ import StyledButton from './style';
 
 function MenuButton(): JSX.Element | null {
   const { theme } = useCustomTheme();
-  const { isMenuOpened, toggleMenu } = useContext(ToggleMenuContext);
+  const { toggleMenu } = useContext(ToggleMenuContext);
   const { width } = useContext(WindowSizeContext);
 
-  const variants = {
-    opened: { scaleX: -1, transition: { duration: theme.animation.normal } },
-    closed: { scaleX: 1, transition: { duration: theme.animation.normal } },
-  };
-
   return width < theme.sizes.maxMobileScreen ? (
-    <StyledButton
-      animate={isMenuOpened ? 'opened' : 'closed'}
-      variants={variants}
-      onClick={toggleMenu}
-    >
+    <StyledButton onClick={toggleMenu}>
       <MenuIcon />
     </StyledButton>
   ) : null;
