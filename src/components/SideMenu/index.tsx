@@ -66,9 +66,9 @@ function SideMenu(): JSX.Element {
         <ExpandableElement title="Practices">
           <CheckboxFilter dataArray={practicesData} />
         </ExpandableElement>
-        <Divider />
         {isLogged && (
           <>
+            <Divider />
             <SideMenuButton
               title="My Favorites"
               onClick={() => console.log('My Favorites')}

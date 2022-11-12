@@ -34,7 +34,7 @@ const StyledSideMenuButton = styled.button<IStyledButton>`
           color: ${theme.colors.text};
           background-color: ${theme.colors.primary};
 
-          height: ;
+          height: ${theme.sizes.genericElementHeight};
 
           font-weight: 500;
           font-size: 14px;
