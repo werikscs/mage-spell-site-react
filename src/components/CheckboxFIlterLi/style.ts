@@ -17,6 +17,11 @@ const StyledLi = styled(motion.li)`
 
   cursor: pointer;
 
+  :last-child {
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+  }
+
   @media (hover: hover) {
     :hover {
       background-color: ${({ theme }) => theme.colors.hover};
