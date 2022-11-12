@@ -22,12 +22,12 @@ function SideMenu(): JSX.Element {
     hidden: {
       opacity: 0,
       width: theme.sizes.sideMenuShadow,
-      transition: { duration: 0.25 },
+      transition: { duration: theme.animation.fast },
     },
     visible: {
       opacity: 1,
       width: theme.sizes.sideMenuShadow,
-      transition: { duration: 0.25 },
+      transition: { duration: theme.animation.fast },
     },
     none: { opacity: 1, width: theme.sizes.sideMenu },
   };
