@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ToggleMenuTypes } from './types';
 
 export interface IReactChildren {
@@ -6,4 +7,10 @@ export interface IReactChildren {
 
 export interface IToggleMenu {
   isMenuOpened: ToggleMenuTypes;
+}
+
+export interface IButton {
+  title: string;
+  icon?: ReactNode;
+  onClick: () => void;
 }
