@@ -28,3 +28,6 @@ dist-ssr
 .build
 firebase.json
 .firebaserc
+
+.env.development
+.env.production
