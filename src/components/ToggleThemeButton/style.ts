@@ -13,6 +13,18 @@ const StyledButton = styled(motion.button)`
   padding: 4px;
 
   background-color: transparent;
+
+  @media (hover: hover) {
+    :hover {
+      background-color: ${({ theme }) => theme.colors.hover};
+    }
+  }
+
+  @media (hover: none) {
+    :active {
+      background-color: ${({ theme }) => theme.colors.hover};
+    }
+  }
 `;
 
 export default StyledButton;
