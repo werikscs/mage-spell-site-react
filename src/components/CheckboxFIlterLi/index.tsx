@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import useCustomTheme from '../../hooks/useCustomTheme';
 import { ILiComponent } from '../../utils/componentData';
 import CheckboxIcon from '../Icons/CheckboxIcon';
 import StyledLi from './style';
