@@ -45,6 +45,10 @@ const StyledSection = styled(motion.section)`
   box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
 
   background-color: ${({ theme }) => theme.colors.secondary};
+
+  .divider:last-of-type {
+    margin-top: auto;
+  }
 `;
 
 export { StyledDiv, StyledSection };
