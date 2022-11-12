@@ -15,7 +15,8 @@ export const StyledHeader = styled.header`
   padding: 16px;
 
   background-color: ${({ theme }) => theme.colors.primary};
-  box-shadow: 0 2px 5px ${({ theme }) => theme.colors.shadow};
+  box-shadow: 0px 1px 2px 0px ${({ theme }) => theme.colors.shadow},
+    0px 1px 3px 1px ${({ theme }) => theme.colors.shadow};
 
   > a {
     display: flex;
