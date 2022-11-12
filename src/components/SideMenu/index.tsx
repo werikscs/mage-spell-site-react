@@ -13,11 +13,14 @@ import { StyledDiv, StyledSection } from './style';
 import ExpandableElement from '../ExpandableElement';
 import CheckboxFilter from '../CheckboxFilter';
 import SideMenuButton from '../SideMenuButton';
+import StarIcon from '../Icons/StarIcon';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
   const { width } = useContext(WindowSizeContext);
   const { theme } = useCustomTheme();
+
+  const isLogged = true;
 
   const variants = {
     hidden: {
@@ -62,6 +65,13 @@ function SideMenu(): JSX.Element {
           <CheckboxFilter dataArray={practicesData} />
         </ExpandableElement>
         <Divider />
+        {isLogged && (
+          <SideMenuButton
+            title="My Favorites"
+            onClick={() => console.log('My Favorites')}
+            icon={<StarIcon isFilled />}
+          />
+        )}
       </StyledSection>
     </StyledDiv>
   );

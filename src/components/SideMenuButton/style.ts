@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 const StyledSideMenuButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
   text-align: start;
 
   color: ${({ theme }) => theme.colors.text};
