@@ -24,6 +24,7 @@ export const light: DefaultTheme = {
   },
   animation: {
     fast: 0.1,
+    slightlyFast: 0.175,
     normal: 0.25,
     slow: 0.75,
   },
@@ -53,6 +54,7 @@ export const dark: DefaultTheme = {
   },
   animation: {
     fast: 0.1,
+    slightlyFast: 0.175,
     normal: 0.25,
     slow: 0.5,
   },

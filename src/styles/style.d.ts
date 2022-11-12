@@ -28,6 +28,7 @@ declare module 'styled-components' {
 
     animation: {
       fast: number;
+      slightlyFast: number;
       normal: number;
       slow: number;
     };

@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { ReactNode, useState } from 'react';
 import useCustomTheme from '../../hooks/useCustomTheme';
 import ArrowIcon from '../Icons/ArrowIcon';
@@ -17,32 +18,41 @@ function ExpandableElement({
 
   const variants = {
     hidden: {
-      height: 0,
       opacity: 0,
-      display: 'none',
-      transition: { duration: theme.animation.fast },
+      transition: {
+        duration: theme.animation.slightlyFast,
+      },
     },
     visible: {
-      height: 'fit-content',
       opacity: 1,
-      display: 'flex',
-      transition: { duration: theme.animation.fast },
+      transition: {
+        duration: theme.animation.slightlyFast,
+      },
     },
+  };
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
   };
 
   return (
     <StyledSection>
-      <StyledDiv onClick={() => setIsExpanded(!isExpanded)} aria-hidden="true">
+      <StyledDiv onClick={toggleExpand} aria-hidden="true">
         <span>{title}</span>
         <ArrowIcon isExpanded={isExpanded} />
       </StyledDiv>
-      <StyledExpandableDiv
-        initial="hidden"
-        animate={isExpanded ? 'visible' : 'hidden'}
-        variants={variants}
-      >
-        {children}
-      </StyledExpandableDiv>
+      <AnimatePresence>
+        {isExpanded && (
+          <StyledExpandableDiv
+            initial="hidden"
+            animate="visible"
+            variants={variants}
+            exit="hidden"
+          >
+            {children}
+          </StyledExpandableDiv>
+        )}
+      </AnimatePresence>
     </StyledSection>
   );
 }
