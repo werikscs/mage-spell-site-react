@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import Providers from './providers';
 import GlobalStyle from './styles/global-style';
+import './config/firebase-config';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
