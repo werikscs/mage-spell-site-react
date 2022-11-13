@@ -27,11 +27,13 @@ function SideMenu(): JSX.Element {
   const variants = {
     hidden: {
       opacity: 0,
+      display: 'none',
       width: theme.sizes.sideMenuShadow,
       transition: { duration: theme.animation.fast },
     },
     visible: {
       opacity: 1,
+      display: 'flex',
       width: theme.sizes.sideMenuShadow,
       transition: { duration: theme.animation.fast },
     },
@@ -39,8 +41,9 @@ function SideMenu(): JSX.Element {
   };
 
   const handleScreenResize = () => {
-    if (width > theme.sizes.maxMobileScreen) return 'none';
-    return isMenuOpened ? 'visible' : 'hidden';
+    if (width < theme.sizes.maxMobileScreen)
+      return isMenuOpened ? 'visible' : 'hidden';
+    return 'none';
   };
 
   return (
