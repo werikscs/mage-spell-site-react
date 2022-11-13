@@ -1,14 +1,18 @@
 import SpellCardLi from '../SpellCardLi';
+import StyledUl from './style';
 
 function SpellCardList(): JSX.Element {
   return (
-    <ul>
+    <StyledUl>
       <SpellCardLi />
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-      <li>a</li>
-    </ul>
+      <SpellCardLi />
+      <SpellCardLi />
+      <SpellCardLi />
+      <SpellCardLi />
+      <SpellCardLi />
+      <SpellCardLi />
+      <SpellCardLi />
+    </StyledUl>
   );
 }
 
