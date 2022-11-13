@@ -1,7 +1,9 @@
+import SpellCardLi from '../SpellCardLi';
+
 function SpellCardList(): JSX.Element {
   return (
     <ul>
-      <li>a</li>
+      <SpellCardLi />
       <li>a</li>
       <li>a</li>
       <li>a</li>
