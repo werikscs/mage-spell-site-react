@@ -11,12 +11,12 @@ import Divider from '../Divider';
 import SearchBar from '../SearchBar';
 import { StyledDiv, StyledSection } from './style';
 import ExpandableElement from '../ExpandableElement';
-import CheckboxFilter from '../CheckboxFilter';
+import CheckboxFilterList from '../CheckboxFilterList';
 import SideMenuButton from '../SideMenuButton';
 import StarIcon from '../Icons/StarIcon';
 import BookIcon from '../Icons/BookIcon';
 import QuestionIcon from '../Icons/QuestionIcon';
-import UserIcon from '../UserIcon';
+import UserIcon from '../Icons/UserIcon';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
@@ -61,13 +61,13 @@ function SideMenu(): JSX.Element {
           onClick={() => console.log('Most favorited')}
         />
         <ExpandableElement title="Arcanas">
-          <CheckboxFilter dataArray={arcanasData} />
+          <CheckboxFilterList dataArray={arcanasData} />
         </ExpandableElement>
         <ExpandableElement title="Degrees">
-          <CheckboxFilter dataArray={degreesData} />
+          <CheckboxFilterList dataArray={degreesData} />
         </ExpandableElement>
         <ExpandableElement title="Practices">
-          <CheckboxFilter dataArray={practicesData} />
+          <CheckboxFilterList dataArray={practicesData} />
         </ExpandableElement>
         {isLogged && (
           <>
@@ -75,7 +75,7 @@ function SideMenu(): JSX.Element {
             <SideMenuButton
               title="My Favorites"
               onClick={() => console.log('My Favorites')}
-              icon={<StarIcon isFilled />}
+              icon={<StarIcon local="sidemenu" isFilled />}
             />
             <SideMenuButton
               title="My Spells"

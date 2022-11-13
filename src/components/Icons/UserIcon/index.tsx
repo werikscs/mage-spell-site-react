@@ -1,4 +1,4 @@
-import useCustomTheme from '../../hooks/useCustomTheme';
+import useCustomTheme from '../../../hooks/useCustomTheme';
 
 function UserIcon(): JSX.Element {
   const { theme } = useCustomTheme();
