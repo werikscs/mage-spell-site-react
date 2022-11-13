@@ -3,11 +3,11 @@ import { ILiArray } from '../../utils/componentData';
 import CheckboxFilterLi from '../CheckboxFIlterLi';
 import StyledUl from './style';
 
-interface ICheckboxFilter {
+interface ICheckboxFilterList {
   dataArray: ILiArray[];
 }
 
-function CheckboxFilter({ dataArray }: ICheckboxFilter): JSX.Element {
+function CheckboxFilterList({ dataArray }: ICheckboxFilterList): JSX.Element {
   const [resetCheckbox, setResetCheckbox] = useState<boolean>(false);
 
   return (
@@ -25,4 +25,4 @@ function CheckboxFilter({ dataArray }: ICheckboxFilter): JSX.Element {
   );
 }
 
-export default CheckboxFilter;
+export default CheckboxFilterList;
