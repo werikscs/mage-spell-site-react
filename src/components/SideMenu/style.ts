@@ -6,6 +6,7 @@ interface IWidth {
 }
 
 const StyledDiv = styled(motion.div)<IWidth>`
+  flex: 1;
   ${({ theme, width }) =>
     width > theme.sizes.maxMobileScreen
       ? css`
@@ -37,6 +38,7 @@ const StyledSection = styled(motion.section)`
 
   overflow-y: auto;
 
+  width: ${({ theme }) => theme.sizes.sideMenu};
   max-width: ${({ theme }) => theme.sizes.sideMenu};
   /* min-height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight}); */
   min-height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});

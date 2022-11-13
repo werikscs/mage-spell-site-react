@@ -16,7 +16,7 @@ import SideMenuButton from '../SideMenuButton';
 import StarIcon from '../Icons/StarIcon';
 import BookIcon from '../Icons/BookIcon';
 import QuestionIcon from '../Icons/QuestionIcon';
-import UserIcon from '../UserIcon';
+import UserIcon from '../Icons/UserIcon';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
@@ -75,7 +75,7 @@ function SideMenu(): JSX.Element {
             <SideMenuButton
               title="My Favorites"
               onClick={() => console.log('My Favorites')}
-              icon={<StarIcon isFilled />}
+              icon={<StarIcon local="sidemenu" isFilled />}
             />
             <SideMenuButton
               title="My Spells"
