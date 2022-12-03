@@ -17,6 +17,7 @@ const StyledSideMenuButton = styled.button<IStyledButton>`
           justify-content: center;
           gap: 8px;
 
+          min-height: 50px;
           height: 50px;
 
           color: ${theme.colors.text};
@@ -34,6 +35,7 @@ const StyledSideMenuButton = styled.button<IStyledButton>`
           color: ${theme.colors.text};
           background-color: ${theme.colors.primary};
 
+          min-height: ${theme.sizes.genericElementHeight};
           height: ${theme.sizes.genericElementHeight};
 
           font-weight: 500;

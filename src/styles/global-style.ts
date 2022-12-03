@@ -12,11 +12,12 @@ const GlobalStyle = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     font-family: 'Inter', sans-serif;
   }
+
   body{
     min-width: 320px;
-    height: 100vh;
     background-color: ${({ theme }) => theme.colors.generalBg};
   }
+
   button {
     cursor: pointer;
     background-color: transparent;

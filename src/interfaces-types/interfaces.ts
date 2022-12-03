@@ -15,3 +15,7 @@ export interface IButton {
   variant?: string;
   onClick: () => void;
 }
+
+export interface IScreenDimensions {
+  screenDimensions: { width: number; height: number };
+}

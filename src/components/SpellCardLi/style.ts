@@ -9,6 +9,8 @@ const StyledLi = styled.li`
   width: 100%;
   max-width: 350px;
 
+  height: fit-content;
+
   padding: 16px;
 
   border-radius: 8px;

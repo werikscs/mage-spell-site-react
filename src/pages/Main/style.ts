@@ -6,7 +6,7 @@ const StyledMain = styled.main`
 
   position: relative;
 
-  width: 100%;
+  margin-top: ${({ theme }) => theme.sizes.headerHeight};
 `;
 
 export default StyledMain;
