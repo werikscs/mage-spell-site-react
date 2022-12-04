@@ -1,4 +1,4 @@
-import { Arcanas, Degrees, Practices } from './enums';
+import { Arcanas, Degrees, Practices } from './spellsUtils';
 
 export interface ILiComponent {
   title: string;

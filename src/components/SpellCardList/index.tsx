@@ -1,6 +1,9 @@
 import { useContext } from 'react';
 import WindowSizeContext from '../../context/WindowSizeContext';
+import spells from '../../utils/spells';
 import SpellCardLi from '../SpellCardLi';
+import SpellCardFormatter from '../SpellCardLi/spellCardFormatter';
+
 import StyledUl from './style';
 
 function SpellCardList(): JSX.Element {
@@ -8,20 +11,12 @@ function SpellCardList(): JSX.Element {
 
   return (
     <StyledUl screenDimensions={{ width, height }}>
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
-      <SpellCardLi />
+      {spells.map((spell) => (
+        <SpellCardLi
+          key={spell.id}
+          spellData={SpellCardFormatter.formatDataCardObject(spell)}
+        />
+      ))}
     </StyledUl>
   );
 }
