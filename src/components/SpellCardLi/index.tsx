@@ -46,7 +46,12 @@ function SpellCardLi({ spellData }: ISpellCardLi): JSX.Element {
         )}
       </div>
       <div className="spell-descriptions">
-        <span className="main-description">{spellData.description}</span>
+        {spellData.description.map((description, i) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <span key={i} className="main-description">
+            {description}
+          </span>
+        ))}
       </div>
       <div className="spell-footer">
         <span className="author">by Frishman </span>

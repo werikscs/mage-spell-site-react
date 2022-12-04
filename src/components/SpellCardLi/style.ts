@@ -62,6 +62,10 @@ const StyledLi = styled.li`
     text-align: justify;
 
     color: ${({ theme }) => theme.colors.text};
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .spell-footer {

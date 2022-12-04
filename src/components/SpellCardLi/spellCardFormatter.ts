@@ -28,7 +28,7 @@ class SpellCardFormatter {
       updatedAt,
       author,
       name,
-      description,
+      description: this.formatDescription(description),
       extraInfo,
     };
 
@@ -47,8 +47,8 @@ class SpellCardFormatter {
     return stringSpellStype.slice(0, -2);
   }
 
-  static formatDescription(description: string): string {
-    
+  static formatDescription(description: string): string[] {
+    return description.split('\n');
   }
 }
 

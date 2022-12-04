@@ -39,18 +39,21 @@ type SpellProperties = {
   cost?: string;
 };
 
+type SpellDescription = string;
+type SpellDescriptionFormatted = string[];
+
 interface ISpellDataCard {
   id: number;
   updatedAt: string;
   author: string;
   name: string;
-  description: string;
   extraInfo: { title: string; description: string[] }[];
 }
 
 export interface ISpellDataCardFormatted extends ISpellDataCard {
   type: string;
   properties: SpellPropertiesFormatted;
+  description: SpellDescriptionFormatted;
 }
 
 export interface ISpellData extends ISpellDataCard {
@@ -59,6 +62,7 @@ export interface ISpellData extends ISpellDataCard {
   createdAt: string;
   type: SpellType[];
   properties: SpellProperties;
+  description: SpellDescription;
   comments: {
     id: number;
     spellId: number;
