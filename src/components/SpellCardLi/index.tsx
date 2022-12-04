@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { ISpellDataCardFormatted } from '../../interfaces-types/interfaces';
 import Divider from '../Divider';
 import CommentIcon from '../Icons/CommentIcon';
@@ -47,22 +48,34 @@ function SpellCardLi({ spellData }: ISpellCardLi): JSX.Element {
       </div>
       <div className="spell-descriptions">
         {spellData.description.map((description, i) => (
-          // eslint-disable-next-line react/no-array-index-key
           <span key={i} className="main-description">
             {description}
           </span>
         ))}
       </div>
+      <div className="spell-extra-info">
+        {spellData.extraInfo.map((info, i) => (
+          <div key={i}>
+            <span className="info-title">{info.title}</span>
+            {info.description.map((description) => (
+              // eslint-disable-next-line react/jsx-key
+              <span className="main-description">{description}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="spell-last-edited">
+        Last edited: {spellData.updatedAt}
+      </div>
       <div className="spell-footer">
-        <span className="author">by Frishman </span>
+        <span className="author">by {spellData.author} </span>
         <span>
           <CommentIcon />
-          22
+          {spellData.commentNum}
         </span>
-        <span>#999</span>
+        <span>#{spellData.id}</span>
         <StarIcon local="spell-card" isFilled={false} />
       </div>
-      <div>Last edited</div>
     </StyledLi>
   );
 }

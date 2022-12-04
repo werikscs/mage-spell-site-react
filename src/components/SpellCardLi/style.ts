@@ -9,7 +9,7 @@ const StyledLi = styled.li`
   width: 100%;
   max-width: 350px;
 
-  height: fit-content;
+  height: auto;
 
   padding: 16px;
 
@@ -66,6 +66,42 @@ const StyledLi = styled.li`
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .spell-extra-info {
+    display: flex;
+    flex-direction: column;
+
+    .info-title {
+      font-size: 15px;
+      font-weight: bold;
+
+      color: ${({ theme }) => theme.colors.text};
+    }
+
+    .main-description {
+      font-size: 15px;
+      font-weight: normal;
+
+      text-align: justify;
+
+      color: ${({ theme }) => theme.colors.text};
+
+      display: block;
+
+      margin-bottom: 8px;
+    }
+  }
+
+  .spell-last-edited {
+    color: ${({ theme }) => theme.colors.accent};
+
+    font-size: 12px;
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-top: auto;
   }
 
   .spell-footer {
