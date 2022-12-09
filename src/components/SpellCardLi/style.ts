@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-const StyledLi = styled.li`
+interface IStyledLi {
+  width: number;
+}
+
+const StyledLi = styled.li<IStyledLi>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-wrap: wrap;
 
-  min-width: 288px;
+  min-width: ${({ width }) => width};
   width: 100%;
-  max-width: 350px;
 
   height: auto;
 
@@ -18,6 +22,19 @@ const StyledLi = styled.li`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   box-shadow: 0 4px 4px ${({ theme }) => theme.colors.shadow};
+
+  @media screen and (min-width: 700px) {
+    width: calc((${({ width }) => width}px / 2) - 32px);
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: calc(
+      (${({ width }) => width}px) - 32px -
+        ${({ theme }) => theme.sizes.sideMenu}
+    );
+
+    flex: 1 0 360px;
+  }
 
   .spell-header {
     display: flex;
