@@ -1,4 +1,6 @@
 /* eslint-disable react/no-array-index-key */
+import { useContext } from 'react';
+import WindowSizeContext from '../../context/WindowSizeContext';
 import { ISpellDataCardFormatted } from '../../interfaces-types/interfaces';
 import Divider from '../Divider';
 import CommentIcon from '../Icons/CommentIcon';
@@ -10,9 +12,9 @@ interface ISpellCardLi {
 }
 
 function SpellCardLi({ spellData }: ISpellCardLi): JSX.Element {
-  console.log(spellData);
+  const { width } = useContext(WindowSizeContext);
   return (
-    <StyledLi>
+    <StyledLi width={width}>
       <div className="spell-header">
         <span className="spell-name">{spellData.name}</span>
         <span className="spell-level">{spellData.type}</span>
@@ -48,18 +50,18 @@ function SpellCardLi({ spellData }: ISpellCardLi): JSX.Element {
       </div>
       <div className="spell-descriptions">
         {spellData.description.map((description, i) => (
-          <span key={i} className="main-description">
+          <span key={'desc'+i} className="main-description">
             {description}
           </span>
         ))}
       </div>
       <div className="spell-extra-info">
         {spellData.extraInfo.map((info, i) => (
-          <div key={i}>
+          <div key={'extraInfo'+i}>
             <span className="info-title">{info.title}</span>
-            {info.description.map((description) => (
+            {info.description.map((description, i) => (
               // eslint-disable-next-line react/jsx-key
-              <span className="main-description">{description}</span>
+              <span key={'info-title'+i} className="main-description">{description}</span>
             ))}
           </div>
         ))}
