@@ -22,10 +22,6 @@ const StyledLi = styled.li<IStyledLi>`
 
   box-shadow: 0 4px 4px ${({ theme }) => theme.colors.shadow};
 
-  @media screen and (min-width: 1024px) {
-    flex: 1 0 360px;
-  }
-
   .spell-header {
     display: flex;
     flex-direction: column;
