@@ -1,15 +1,16 @@
+import Masonry from 'react-responsive-masonry';
 import styled from 'styled-components';
 import { IScreenDimensions } from '../../interfaces-types/interfaces';
 
-const StyledUl = styled.ul<IScreenDimensions>`
+const StyledMasonry = styled(Masonry)<IScreenDimensions>`
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 0.5rem;
 
   position: absolute;
   left: 0;
 
-  padding: 16px;
+  padding: 0.5rem;
 
   height: calc(
     ${({ screenDimensions }) => screenDimensions.height}px -
@@ -17,10 +18,6 @@ const StyledUl = styled.ul<IScreenDimensions>`
   );
 
   overflow-y: auto;
-
-  @media (min-width: ${({ theme }) => theme.sizes.maxMobileScreen}px) {
-    width: calc(100% - ${({ theme }) => theme.sizes.sideMenu});
-  }
 `;
 
-export default StyledUl;
+export default StyledMasonry;
