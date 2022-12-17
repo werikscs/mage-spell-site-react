@@ -20,7 +20,7 @@ import UserIcon from '../Icons/UserIcon';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
-  const { width } = useContext(WindowSizeContext);
+  const { width, height } = useContext(WindowSizeContext);
   const { theme } = useCustomTheme();
   const [isLogged, setIsLogged] = useState<boolean>(false);
 
@@ -51,9 +51,8 @@ function SideMenu(): JSX.Element {
       animate={handleScreenResize()}
       initial={handleScreenResize()}
       variants={variants}
-      width={width}
     >
-      <StyledSection>
+      <StyledSection screenDimensions={{ width, height }}>
         <SearchBar />
         <Divider />
         <SideMenuButton

@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
-const StyledLi = styled.li`
+interface IStyledLi {
+  width: number;
+}
+
+const StyledLi = styled.li<IStyledLi>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex-wrap: wrap;
 
-  min-width: 288px;
   width: 100%;
-  max-width: 350px;
+
+  height: auto;
 
   padding: 16px;
 
@@ -16,6 +21,10 @@ const StyledLi = styled.li`
   background-color: ${({ theme }) => theme.colors.secondary};
 
   box-shadow: 0 4px 4px ${({ theme }) => theme.colors.shadow};
+
+  @media screen and (min-width: 1024px) {
+    flex: 1 0 360px;
+  }
 
   .spell-header {
     display: flex;
@@ -60,6 +69,46 @@ const StyledLi = styled.li`
     text-align: justify;
 
     color: ${({ theme }) => theme.colors.text};
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .spell-extra-info {
+    display: flex;
+    flex-direction: column;
+
+    .info-title {
+      font-size: 15px;
+      font-weight: bold;
+
+      color: ${({ theme }) => theme.colors.text};
+    }
+
+    .main-description {
+      font-size: 15px;
+      font-weight: normal;
+
+      text-align: justify;
+
+      color: ${({ theme }) => theme.colors.text};
+
+      display: block;
+
+      margin-bottom: 8px;
+    }
+  }
+
+  .spell-last-edited {
+    color: ${({ theme }) => theme.colors.accent};
+
+    font-size: 12px;
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-top: auto;
   }
 
   .spell-footer {
