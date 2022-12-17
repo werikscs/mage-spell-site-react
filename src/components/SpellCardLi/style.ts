@@ -10,7 +10,6 @@ const StyledLi = styled.li<IStyledLi>`
   gap: 8px;
   flex-wrap: wrap;
 
-  min-width: ${({ width }) => width};
   width: 100%;
 
   height: auto;
@@ -23,16 +22,7 @@ const StyledLi = styled.li<IStyledLi>`
 
   box-shadow: 0 4px 4px ${({ theme }) => theme.colors.shadow};
 
-  @media screen and (min-width: 700px) {
-    width: calc((${({ width }) => width}px / 2) - 32px);
-  }
-
   @media screen and (min-width: 1024px) {
-    width: calc(
-      (${({ width }) => width}px) - 32px -
-        ${({ theme }) => theme.sizes.sideMenu}
-    );
-
     flex: 1 0 360px;
   }
 
