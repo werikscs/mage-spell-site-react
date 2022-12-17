@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const StyledSection = styled(motion.section)`
+export const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
 
@@ -10,7 +9,7 @@ export const StyledSection = styled(motion.section)`
   background-color: ${({ theme }) => theme.colors.primary};
 `;
 
-export const StyledDiv = styled(motion.div)`
+export const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -28,4 +27,4 @@ export const StyledDiv = styled(motion.div)`
   }
 `;
 
-export const StyledExpandableDiv = styled(motion.div)``;
+export const StyledExpandableDiv = styled.div``;

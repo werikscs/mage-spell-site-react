@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const StyledLi = styled(motion.li)`
+const StyledLi = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
