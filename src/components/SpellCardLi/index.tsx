@@ -50,18 +50,20 @@ function SpellCardLi({ spellData }: ISpellCardLi): JSX.Element {
       </div>
       <div className="spell-descriptions">
         {spellData.description.map((description, i) => (
-          <span key={'desc'+i} className="main-description">
+          <span key={`desc${i}`} className="main-description">
             {description}
           </span>
         ))}
       </div>
       <div className="spell-extra-info">
         {spellData.extraInfo.map((info, i) => (
-          <div key={'extraInfo'+i}>
+          <div key={`extraInfo${i}`}>
             <span className="info-title">{info.title}</span>
-            {info.description.map((description, i) => (
+            {info.description.map((description, j) => (
               // eslint-disable-next-line react/jsx-key
-              <span key={'info-title'+i} className="main-description">{description}</span>
+              <span key={`info-title${j}`} className="main-description">
+                {description}
+              </span>
             ))}
           </div>
         ))}
