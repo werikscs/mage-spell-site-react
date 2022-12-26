@@ -7,6 +7,14 @@ export const StyledSection = styled.section`
   border-radius: 8px;
 
   background-color: ${({ theme }) => theme.colors.primary};
+
+  .visible {
+    display: block;
+  }
+
+  .invisible {
+    display: none;
+  }
 `;
 
 export const StyledDiv = styled.div`
