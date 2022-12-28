@@ -31,3 +31,5 @@ firebase.json
 
 .env.development
 .env.production
+
+coverage
