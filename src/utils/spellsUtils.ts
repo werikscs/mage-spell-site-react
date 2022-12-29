@@ -20,6 +20,11 @@ export enum Arcanas {
   time = 'Time',
 }
 
+export const arcanaIndex = (arcanaName: string): number => {
+  const arcanaKeys = Object.values(Arcanas);
+  return arcanaKeys.findIndex((name) => name === arcanaName);
+};
+
 export enum Practices {
   all = 'All',
   // •
