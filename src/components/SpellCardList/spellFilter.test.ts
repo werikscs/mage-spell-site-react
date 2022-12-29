@@ -53,4 +53,193 @@ describe('Filter - by Arcanas', () => {
       );
     });
   });
+
+  it('should return only Fate spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Fate');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Forces spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Forces');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Life spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Life');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Matter spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Matter');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Mind spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Mind');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Prime spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Prime');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Space spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Space');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Spirit spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Spirit');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
+
+  it('should return only Time spells', () => {
+    // arrange
+    const currentSpells = spells;
+    const arcanaToSearch = arcanaIndex('Time');
+    const sut = SpellFilter;
+    // act
+    const filteredSpells = sut.filterBy(arcanaToSearch, currentSpells);
+    // assert
+    filteredSpells.forEach((spellFiltered) => {
+      const arcanaAndDegreeArray = spellFiltered.type;
+
+      expect(arcanaAndDegreeArray).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+            arcana: arcanaToSearch,
+          }),
+        ])
+      );
+    });
+  });
 });
