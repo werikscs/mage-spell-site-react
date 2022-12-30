@@ -10,6 +10,7 @@ function CheckboxFilterLi({
   resetCheckboxState,
 }: ILiComponent): JSX.Element {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  console.log(title);
 
   useEffect(() => {
     setIsChecked(false);
