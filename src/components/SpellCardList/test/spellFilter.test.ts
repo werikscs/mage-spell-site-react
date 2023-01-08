@@ -1,6 +1,7 @@
-import { ISpellData, SpellType } from '../../interfaces-types/interfaces';
-import spells from '../../utils/spells';
-import { Arcanas, Degrees, Practices } from '../../utils/spellsUtils';
+import { ISpellData, SpellType } from '../../../interfaces-types/interfaces';
+import spells from '../../../utils/spells';
+import { Arcanas, Degrees, Practices } from '../../../utils/spellsUtils';
+import fakeSpells from './dbSpells.mock';
 
 interface ISelectedOptionsString {
   arcanas: string[];
@@ -18,7 +19,44 @@ interface IOptionToAddOrRemove {
   type: 'arcanas' | 'degrees' | 'practices';
   value: Arcanas | Degrees | Practices;
 }
+
 class SpellFilter {
+  static filterBySelectedOptions(
+    currentOptions: ISelectedOptionsString,
+    currentSpells: ISpellData[]
+  ): ISpellData[] {
+    const currentOptionsToNumbers = SpellFilter.formatOptions(currentOptions);
+    const { arcanas, degrees, practices } = currentOptionsToNumbers;
+    const filteredSpells: ISpellData[] = [];
+
+    currentSpells.forEach((spell) => {
+      const spellType = spell.type;
+      const spellPractice = spell.properties.practice;
+
+      const isSpellArcanasInTheOptions =
+        SpellFilter.checkIfSpellArcanasIsInTheOptions(spellType, arcanas);
+
+      const isSpellDegreesInTheOptions =
+        SpellFilter.checkIfSpellDegreesIsInTheOptions(spellType, degrees);
+
+      const isSpellPracticeInTheOptions =
+        SpellFilter.checkIfSpellPracticeIsInTheOptions(
+          spellPractice,
+          practices
+        );
+
+      if (
+        isSpellArcanasInTheOptions &&
+        isSpellDegreesInTheOptions &&
+        isSpellPracticeInTheOptions
+      ) {
+        filteredSpells.push(spell);
+      }
+    });
+
+    return filteredSpells;
+  }
+
   static checkIfSpellDegreesIsInTheOptions(
     spellType: SpellType[],
     degrees: number[]
@@ -66,34 +104,6 @@ class SpellFilter {
     if (isPracticeToShowAll) return true;
 
     return practices.some((practice) => practice === spellPractice);
-  }
-
-  static filterBySelectedOptions(
-    currentOptions: ISelectedOptionsString,
-    currentSpells: ISpellData[]
-  ): ISpellData[] {
-    const currentOptionsToNumbers = SpellFilter.formatOptions(currentOptions);
-    const { arcanas, degrees, practices } = currentOptionsToNumbers;
-    const newSpell: ISpellData[] = [];
-
-    currentSpells.forEach((spell) => {
-      const spellType = spell.type;
-      const spellPractice = spell.properties.practice;
-
-      // // verify if inside type exist all options of arcanas
-      // const isSpellArcanasInTheOptions =
-      //   SpellFilter.checkIfSpellArcanasIsInTheOptions(spellType, arcanas);
-      // // verify if inside type exist all options of degrees
-      // const isSpellDegreesInTheOptions =
-      //   SpellFilter.checkIfSpellDegreesIsInTheOptions(spellType, degrees);
-      // verify if spell practice exists inside of practices
-      // const isSpellPracticeInTheOptions =
-      //   SpellFilter.checkIfSpellPracticeIsInTheOptions(
-      //     spellPractice,
-      //     practices
-      //   );
-    });
-    return currentSpells;
   }
 
   static addOption(
@@ -729,7 +739,7 @@ describe('Filter spells', () => {
   describe('By Arcanas', () => {
     it('should return all spells', () => {
       // arrange
-      const currentSpells = spells;
+      const currentSpells = fakeSpells;
 
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
@@ -745,6 +755,266 @@ describe('Filter spells', () => {
       // assert
       expect(currentSpells).toEqual(currentSpells);
       expect(filteredSpells.length).toBe(currentSpells.length);
+    });
+
+    it('should return all death spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 1;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.death],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(3);
+      filteredSpells.forEach((spell) => {
+        const isDeathSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isDeathSpell).toBe(true);
+      });
+    });
+
+    it('should return all fate spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 2;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.fate],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isFateSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isFateSpell).toBe(true);
+      });
+    });
+
+    it('should return all forces spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 3;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.forces],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(8);
+      filteredSpells.forEach((spell) => {
+        const isForcesSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isForcesSpell).toBe(true);
+      });
+    });
+
+    it('should return all life spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 4;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.life],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isLifeSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isLifeSpell).toBe(true);
+      });
+    });
+
+    it('should return all matter spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 5;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.matter],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isMatterSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isMatterSpell).toBe(true);
+      });
+    });
+
+    it('should return all mind spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 6;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.mind],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isMindSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isMindSpell).toBe(true);
+      });
+    });
+
+    it('should return all prime spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 7;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.prime],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(3);
+      filteredSpells.forEach((spell) => {
+        const isPrimeSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isPrimeSpell).toBe(true);
+      });
+    });
+
+    it('should return all space spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 8;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.space],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isSpaceSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isSpaceSpell).toBe(true);
+      });
+    });
+
+    it('should return all spirit spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 9;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.spirit],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isSpiritSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isSpiritSpell).toBe(true);
+      });
+    });
+
+    it('should return all time spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const arcanaIndex = 10;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.time],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(2);
+      filteredSpells.forEach((spell) => {
+        const isTimeSpell = spell.type.some((type) => {
+          return type.arcana === arcanaIndex;
+        });
+        expect(isTimeSpell).toBe(true);
+      });
     });
   });
 });
