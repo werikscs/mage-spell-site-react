@@ -1,11 +1,3 @@
-export enum Degrees {
-  all = 'All',
-  initiate = 'Initiate',
-  apprentice = 'Apprentice',
-  disciple = 'Disciple',
-  adept = 'Adept',
-  master = 'Master',
-}
 export enum Arcanas {
   all = 'All',
   death = 'Death',
@@ -20,10 +12,14 @@ export enum Arcanas {
   time = 'Time',
 }
 
-export const arcanaIndex = (arcanaName: string): number => {
-  const arcanaKeys = Object.values(Arcanas);
-  return arcanaKeys.findIndex((name) => name === arcanaName);
-};
+export enum Degrees {
+  all = 'All',
+  initiate = 'Initiate',
+  apprentice = 'Apprentice',
+  disciple = 'Disciple',
+  adept = 'Adept',
+  master = 'Master',
+}
 
 export enum Practices {
   all = 'All',
@@ -46,3 +42,11 @@ export enum Practices {
   making = 'Making',
   unmaking = 'Unmaking',
 }
+
+export const arcanaIndexes = (arcanaNames: string[]): number[] => {
+  const arcanaKeys = Object.values(Arcanas);
+
+  return arcanaNames.map((arcanaName) => {
+    return arcanaKeys.findIndex((name) => name === arcanaName);
+  });
+};
