@@ -65,15 +65,15 @@ class SpellFilter {
 
     if (isDegreeToShowAll) return true;
 
-    const hasSpellTypeAllDegrees = spellType.every((spellTypeItem) => {
-      const spellTypeCurrentDegree = spellTypeItem.degree;
-      const isSpellTypeCurrentDegreeInDegreeOptions = degrees.includes(
-        spellTypeCurrentDegree
-      );
-      return isSpellTypeCurrentDegreeInDegreeOptions;
+    const isEachDegreeInSpell = degrees.every((degree) => {
+      const isDegreePresentInAnyType = spellType.some((spellTypeItem) => {
+        const currentDegreeSpellType = spellTypeItem.degree;
+        return currentDegreeSpellType === degree;
+      });
+      return isDegreePresentInAnyType;
     });
 
-    return hasSpellTypeAllDegrees;
+    return isEachDegreeInSpell;
   }
 
   static checkIfSpellArcanasIsInTheOptions(
@@ -84,15 +84,15 @@ class SpellFilter {
 
     if (isArcanaToShowAll) return true;
 
-    const hasSpellTypeAllArcanas = spellType.every((spellTypeItem) => {
-      const spellTypeCurrentArcana = spellTypeItem.arcana;
-      const isSpellTypeCurrentArcanaInArcanaOptions = arcanas.includes(
-        spellTypeCurrentArcana
-      );
-      return isSpellTypeCurrentArcanaInArcanaOptions;
+    const isEachArcanaInSpell = arcanas.every((arcana) => {
+      const isArcanaPresentInAnyType = spellType.some((spellTypeItem) => {
+        const currentArcanaSpellType = spellTypeItem.arcana;
+        return currentArcanaSpellType === arcana;
+      });
+      return isArcanaPresentInAnyType;
     });
 
-    return hasSpellTypeAllArcanas;
+    return isEachArcanaInSpell;
   }
 
   static checkIfSpellPracticeIsInTheOptions(
@@ -175,7 +175,7 @@ class SpellFilter {
 }
 
 describe('Filter spells', () => {
-  describe('Filter spells - add and remove options', () => {
+  describe('add and remove options', () => {
     it('should add "Death" option to filter options', () => {
       // arrange
       let currentOptions: ISelectedOptionsString = {
@@ -498,7 +498,7 @@ describe('Filter spells', () => {
     });
   });
 
-  describe('Filter spells - format prop from string to number', () => {
+  describe('format prop from string to number', () => {
     it('should format arcanas array when it has one string', () => {
       // arrange
       const currentOptions: ISelectedOptionsString = {
@@ -544,7 +544,7 @@ describe('Filter spells', () => {
     });
   });
 
-  describe('Filter spells - check filter options', () => {
+  describe('check filter options', () => {
     it('should return true if arcana options is 0 (All)', () => {
       // arrange
       const spellType: SpellType[] = [{ arcana: 4, degree: 4 }];
@@ -563,6 +563,23 @@ describe('Filter spells', () => {
       // arrange
       const spellType: SpellType[] = [{ arcana: 5, degree: 4 }];
       const arcanas: number[] = [5];
+      // act
+      const sut = SpellFilter;
+      const isSpellArcanasInTheOptions = sut.checkIfSpellArcanasIsInTheOptions(
+        spellType,
+        arcanas
+      );
+      // assert
+      expect(isSpellArcanasInTheOptions).toBe(true);
+    });
+
+    it('should return true if spell has more than one type and one option', () => {
+      // arrange
+      const spellType: SpellType[] = [
+        { arcana: 5, degree: 4 },
+        { arcana: 3, degree: 4 },
+      ];
+      const arcanas: number[] = [3];
       // act
       const sut = SpellFilter;
       const isSpellArcanasInTheOptions = sut.checkIfSpellArcanasIsInTheOptions(
@@ -666,6 +683,23 @@ describe('Filter spells', () => {
       expect(isSpellDegreesInTheOptions).toBe(true);
     });
 
+    it('should return true if spell has more than one type and one option', () => {
+      // arrange
+      const spellType: SpellType[] = [
+        { arcana: 5, degree: 4 },
+        { arcana: 3, degree: 7 },
+      ];
+      const degrees: number[] = [7];
+      // act
+      const sut = SpellFilter;
+      const isSpellDegreesInTheOptions = sut.checkIfSpellDegreesIsInTheOptions(
+        spellType,
+        degrees
+      );
+      // assert
+      expect(isSpellDegreesInTheOptions).toBe(true);
+    });
+
     it('should return false if spell does not contain all degrees options (one)', () => {
       // arrange
       const spellType: SpellType[] = [{ arcana: 5, degree: 4 }];
@@ -736,27 +770,7 @@ describe('Filter spells', () => {
     });
   });
 
-  describe('By Arcanas', () => {
-    it('should return all spells', () => {
-      // arrange
-      const currentSpells = fakeSpells;
-
-      const currentOptions: ISelectedOptionsString = {
-        arcanas: [Arcanas.all],
-        degrees: [Degrees.all],
-        practices: [Practices.all],
-      };
-      // act
-      const sut = SpellFilter;
-      const filteredSpells = sut.filterBySelectedOptions(
-        currentOptions,
-        currentSpells
-      );
-      // assert
-      expect(currentSpells).toEqual(currentSpells);
-      expect(filteredSpells.length).toBe(currentSpells.length);
-    });
-
+  describe('by Arcanas', () => {
     it('should return all death spells', () => {
       // arrange
       const currentSpells = fakeSpells;
@@ -1015,6 +1029,134 @@ describe('Filter spells', () => {
         });
         expect(isTimeSpell).toBe(true);
       });
+    });
+  });
+
+  describe('by Degrees', () => {
+    it('should return all initiate spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const degreeIndex = 1;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.initiate],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(6);
+      filteredSpells.forEach((spell) => {
+        const isInitiateSpell = spell.type.some((type) => {
+          return type.degree === degreeIndex;
+        });
+        expect(isInitiateSpell).toBe(true);
+      });
+    });
+
+    it('should return all apprentice spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const degreeIndex = 2;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.apprentice],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(4);
+      filteredSpells.forEach((spell) => {
+        const isApprenticeSpell = spell.type.some((type) => {
+          return type.degree === degreeIndex;
+        });
+        expect(isApprenticeSpell).toBe(true);
+      });
+    });
+
+    it('should return all adept spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const degreeIndex = 4;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.adept],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(4);
+      filteredSpells.forEach((spell) => {
+        const isAdeptSpell = spell.type.some((type) => {
+          return type.degree === degreeIndex;
+        });
+        expect(isAdeptSpell).toBe(true);
+      });
+    });
+
+    it('should return all master spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const degreeIndex = 5;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.master],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(2);
+      filteredSpells.forEach((spell) => {
+        const isMasterSpell = spell.type.some((type) => {
+          return type.degree === degreeIndex;
+        });
+        expect(isMasterSpell).toBe(true);
+      });
+    });
+  });
+
+  describe('mixed options', () => {
+    it('should return all spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(currentSpells).toEqual(currentSpells);
+      expect(filteredSpells.length).toBe(currentSpells.length);
     });
   });
 });
