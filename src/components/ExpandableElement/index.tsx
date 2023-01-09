@@ -23,7 +23,9 @@ function ExpandableElement({
         <span>{title}</span>
         <ArrowIcon isExpanded={isExpanded} />
       </StyledDiv>
-      {isExpanded && <StyledExpandableDiv>{children}</StyledExpandableDiv>}
+      <StyledExpandableDiv isExpanded={isExpanded}>
+        {children}
+      </StyledExpandableDiv>
     </StyledSection>
   );
 }
