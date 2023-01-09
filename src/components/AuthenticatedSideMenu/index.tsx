@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import AutheticateContext from '../../../context/AuthenticateContex';
-import Divider from '../../Divider';
-import BookIcon from '../../Icons/BookIcon';
-import StarIcon from '../../Icons/StarIcon';
-import SideMenuButton from '../../SideMenuButton';
+import AutheticateContext from '../../context/AuthenticateContex';
+import Divider from '../Divider';
+import BookIcon from '../Icons/BookIcon';
+import StarIcon from '../Icons/StarIcon';
+import SideMenuButton from '../SideMenuButton';
 import StyledDiv from './styled';
 
 function AuthenticatedSideMenu(): JSX.Element {

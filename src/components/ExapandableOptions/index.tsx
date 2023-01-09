@@ -2,9 +2,9 @@ import {
   arcanasData,
   degreesData,
   practicesData,
-} from '../../../utils/componentData';
-import CheckboxFilterList from '../../CheckboxFilterList';
-import ExpandableElement from '../../ExpandableElement';
+} from '../../utils/componentData';
+import CheckboxFilterList from '../CheckboxFilterList';
+import ExpandableElement from '../ExpandableElement';
 
 function ExapandableOptions(): JSX.Element {
   return (

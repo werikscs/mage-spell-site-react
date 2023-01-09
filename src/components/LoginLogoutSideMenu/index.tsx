@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import AutheticateContext from '../../../context/AuthenticateContex';
-import UserIcon from '../../Icons/UserIcon';
-import SideMenuButton from '../../SideMenuButton';
+import AutheticateContext from '../../context/AuthenticateContex';
+import UserIcon from '../Icons/UserIcon';
+import SideMenuButton from '../SideMenuButton';
 
 function LoginLogoutButtonSideMenu() {
   const { isLogged, toggleAuthenticate } = useContext(AutheticateContext);

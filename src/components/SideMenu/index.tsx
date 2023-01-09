@@ -7,9 +7,9 @@ import SearchBar from '../SearchBar';
 import { StyledDiv, StyledSection } from './style';
 import SideMenuButton from '../SideMenuButton';
 import QuestionIcon from '../Icons/QuestionIcon';
-import LoginLogoutButtonSideMenu from './Login';
-import AuthenticatedSideMenu from './AuthenticatedSideMenu';
-import ExapandableOptions from './ExapandableOptions';
+import LoginLogoutButtonSideMenu from '../LoginLogoutSideMenu';
+import AuthenticatedSideMenu from '../AuthenticatedSideMenu';
+import ExapandableOptions from '../ExapandableOptions';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);
