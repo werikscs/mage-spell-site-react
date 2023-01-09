@@ -1,178 +1,11 @@
-import { ISpellData, SpellType } from '../../../interfaces-types/interfaces';
-import spells from '../../../utils/spells';
+import { SpellType } from '../../../interfaces-types/interfaces';
 import { Arcanas, Degrees, Practices } from '../../../utils/spellsUtils';
+import {
+  IOptionToAddOrRemove,
+  ISelectedOptionsString,
+  SpellFilter,
+} from '../spellFilter';
 import fakeSpells from './dbSpells.mock';
-
-interface ISelectedOptionsString {
-  arcanas: string[];
-  degrees: string[];
-  practices: string[];
-}
-
-interface ISelectedOptionsFormattedToNumbers {
-  arcanas: number[];
-  degrees: number[];
-  practices: number[];
-}
-
-interface IOptionToAddOrRemove {
-  type: 'arcanas' | 'degrees' | 'practices';
-  value: Arcanas | Degrees | Practices;
-}
-
-class SpellFilter {
-  static filterBySelectedOptions(
-    currentOptions: ISelectedOptionsString,
-    currentSpells: ISpellData[]
-  ): ISpellData[] {
-    const currentOptionsToNumbers = SpellFilter.formatOptions(currentOptions);
-    const { arcanas, degrees, practices } = currentOptionsToNumbers;
-    const filteredSpells: ISpellData[] = [];
-
-    currentSpells.forEach((spell) => {
-      const spellType = spell.type;
-      const spellPractice = spell.properties.practice;
-
-      const isSpellArcanasInTheOptions =
-        SpellFilter.checkIfSpellArcanasIsInTheOptions(spellType, arcanas);
-
-      const isSpellDegreesInTheOptions =
-        SpellFilter.checkIfSpellDegreesIsInTheOptions(spellType, degrees);
-
-      const isSpellPracticeInTheOptions =
-        SpellFilter.checkIfSpellPracticeIsInTheOptions(
-          spellPractice,
-          practices
-        );
-
-      if (
-        isSpellArcanasInTheOptions &&
-        isSpellDegreesInTheOptions &&
-        isSpellPracticeInTheOptions
-      ) {
-        filteredSpells.push(spell);
-      }
-    });
-
-    return filteredSpells;
-  }
-
-  static checkIfSpellDegreesIsInTheOptions(
-    spellType: SpellType[],
-    degrees: number[]
-  ): boolean {
-    const isDegreeToShowAll = degrees[0] === 0;
-
-    if (isDegreeToShowAll) return true;
-
-    const isEachDegreeInSpell = degrees.every((degree) => {
-      const isDegreePresentInAnyType = spellType.some((spellTypeItem) => {
-        const currentDegreeSpellType = spellTypeItem.degree;
-        return currentDegreeSpellType === degree;
-      });
-      return isDegreePresentInAnyType;
-    });
-
-    return isEachDegreeInSpell;
-  }
-
-  static checkIfSpellArcanasIsInTheOptions(
-    spellType: SpellType[],
-    arcanas: number[]
-  ): boolean {
-    const isArcanaToShowAll = arcanas[0] === 0;
-
-    if (isArcanaToShowAll) return true;
-
-    const isEachArcanaInSpell = arcanas.every((arcana) => {
-      const isArcanaPresentInAnyType = spellType.some((spellTypeItem) => {
-        const currentArcanaSpellType = spellTypeItem.arcana;
-        return currentArcanaSpellType === arcana;
-      });
-      return isArcanaPresentInAnyType;
-    });
-
-    return isEachArcanaInSpell;
-  }
-
-  static checkIfSpellPracticeIsInTheOptions(
-    spellPractice: number,
-    practices: number[]
-  ): boolean {
-    const isPracticeToShowAll = practices[0] === 0;
-
-    if (isPracticeToShowAll) return true;
-
-    return practices.some((practice) => practice === spellPractice);
-  }
-
-  static addOption(
-    currentOptions: ISelectedOptionsString,
-    optionToAdd: IOptionToAddOrRemove
-  ): ISelectedOptionsString {
-    const { type, value } = optionToAdd;
-    let optionsUpdated = { ...currentOptions };
-
-    if (value === 'All') {
-      optionsUpdated = { ...currentOptions, [type]: [] };
-    } else {
-      const arrayWithoutAll = currentOptions[type].filter(
-        (item) => item !== 'All'
-      );
-      optionsUpdated = { ...currentOptions, [type]: arrayWithoutAll };
-    }
-
-    optionsUpdated[type].push(value);
-
-    return optionsUpdated;
-  }
-
-  static removeOption(
-    currentOptions: ISelectedOptionsString,
-    optionToRemove: IOptionToAddOrRemove
-  ): ISelectedOptionsString {
-    const { type, value } = optionToRemove;
-
-    const arrayUpdated = currentOptions[type].filter(
-      (optionValue) => optionValue !== value
-    );
-    let optionsUpdated = { ...currentOptions, [type]: arrayUpdated };
-
-    if (optionsUpdated[type].length === 0) {
-      optionsUpdated = { ...optionsUpdated, [type]: ['All'] };
-    }
-
-    return optionsUpdated;
-  }
-
-  static formatOptions(
-    currentOptions: ISelectedOptionsString
-  ): ISelectedOptionsFormattedToNumbers {
-    const { arcanas, degrees, practices } = currentOptions;
-
-    const arcanaEnumValues = Object.values(Arcanas);
-    const degreesEnumValues = Object.values(Degrees);
-    const practicesEnumValues = Object.values(Practices);
-
-    const arcanasFormatted = arcanas.map((arcanaName) => {
-      return arcanaEnumValues.findIndex((value) => value === arcanaName);
-    });
-
-    const degreesFormatted = degrees.map((degreeName) => {
-      return degreesEnumValues.findIndex((value) => value === degreeName);
-    });
-
-    const practicesFormatted = practices.map((practiceName) => {
-      return practicesEnumValues.findIndex((value) => value === practiceName);
-    });
-
-    return {
-      arcanas: arcanasFormatted,
-      degrees: degreesFormatted,
-      practices: practicesFormatted,
-    };
-  }
-}
 
 describe('Filter spells', () => {
   describe('add and remove options', () => {
@@ -1143,7 +976,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 1;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1167,7 +999,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 2;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1191,7 +1022,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 3;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1215,7 +1045,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 4;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1239,7 +1068,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 5;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1263,7 +1091,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 6;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1287,7 +1114,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 7;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1311,7 +1137,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 8;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1335,7 +1160,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 9;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1359,7 +1183,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 10;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1383,7 +1206,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 11;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1407,7 +1229,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 12;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1431,7 +1252,6 @@ describe('Filter spells', () => {
       // arrange
       const currentSpells = fakeSpells;
       const practiceIndex = 13;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1456,7 +1276,6 @@ describe('Filter spells', () => {
     it('should return all spells', () => {
       // arrange
       const currentSpells = fakeSpells;
-
       const currentOptions: ISelectedOptionsString = {
         arcanas: [Arcanas.all],
         degrees: [Degrees.all],
@@ -1471,6 +1290,78 @@ describe('Filter spells', () => {
       // assert
       expect(currentSpells).toEqual(currentSpells);
       expect(filteredSpells.length).toBe(currentSpells.length);
+    });
+
+    it('should return death and apprentice spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.death],
+        degrees: [Degrees.apprentice],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(2);
+    });
+
+    it('should return forces and adept spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.forces],
+        degrees: [Degrees.adept],
+        practices: [Practices.all],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(3);
+    });
+
+    it('should return forces, adept and patterning spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.forces],
+        degrees: [Degrees.adept],
+        practices: [Practices.patterning],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(2);
+    });
+
+    it('should return forces, adept and unraveling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.forces],
+        degrees: [Degrees.adept],
+        practices: [Practices.unraveling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
     });
   });
 });
