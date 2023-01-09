@@ -1138,6 +1138,320 @@ describe('Filter spells', () => {
     });
   });
 
+  describe('by Practices', () => {
+    it('should return all knowing spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 1;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.knowing],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isKnowingSpell = practiceIndex === spell.properties.practice;
+        expect(isKnowingSpell).toBe(true);
+      });
+    });
+
+    it('should return all compelling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 2;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.compelling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(3);
+      filteredSpells.forEach((spell) => {
+        const isCompellingSpell = practiceIndex === spell.properties.practice;
+        expect(isCompellingSpell).toBe(true);
+      });
+    });
+
+    it('should return all unveiling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 3;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.unveiling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(2);
+      filteredSpells.forEach((spell) => {
+        const isUnveilingSpell = practiceIndex === spell.properties.practice;
+        expect(isUnveilingSpell).toBe(true);
+      });
+    });
+
+    it('should return all ruling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 4;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.ruling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isRulingSpell = practiceIndex === spell.properties.practice;
+        expect(isRulingSpell).toBe(true);
+      });
+    });
+
+    it('should return all veiling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 5;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.veiling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isVeiling = practiceIndex === spell.properties.practice;
+        expect(isVeiling).toBe(true);
+      });
+    });
+
+    it('should return all shielding spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 6;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.shielding],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isShielding = practiceIndex === spell.properties.practice;
+        expect(isShielding).toBe(true);
+      });
+    });
+
+    it('should return all weaving spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 7;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.weaving],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isWeaving = practiceIndex === spell.properties.practice;
+        expect(isWeaving).toBe(true);
+      });
+    });
+
+    it('should return all fraying spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 8;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.fraying],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isFraying = practiceIndex === spell.properties.practice;
+        expect(isFraying).toBe(true);
+      });
+    });
+
+    it('should return all perfecting spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 9;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.perfecting],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isPerfecting = practiceIndex === spell.properties.practice;
+        expect(isPerfecting).toBe(true);
+      });
+    });
+
+    it('should return all patterning spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 10;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.patterning],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(3);
+      filteredSpells.forEach((spell) => {
+        const isPatterning = practiceIndex === spell.properties.practice;
+        expect(isPatterning).toBe(true);
+      });
+    });
+
+    it('should return all unraveling spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 11;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.unraveling],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isUnraveling = practiceIndex === spell.properties.practice;
+        expect(isUnraveling).toBe(true);
+      });
+    });
+
+    it('should return all making spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 12;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.making],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isMaking = practiceIndex === spell.properties.practice;
+        expect(isMaking).toBe(true);
+      });
+    });
+
+    it('should return all unmaking spells', () => {
+      // arrange
+      const currentSpells = fakeSpells;
+      const practiceIndex = 13;
+
+      const currentOptions: ISelectedOptionsString = {
+        arcanas: [Arcanas.all],
+        degrees: [Degrees.all],
+        practices: [Practices.unmaking],
+      };
+      // act
+      const sut = SpellFilter;
+      const filteredSpells = sut.filterBySelectedOptions(
+        currentOptions,
+        currentSpells
+      );
+      // assert
+      expect(filteredSpells.length).toBe(1);
+      filteredSpells.forEach((spell) => {
+        const isUnmaking = practiceIndex === spell.properties.practice;
+        expect(isUnmaking).toBe(true);
+      });
+    });
+  });
+
   describe('mixed options', () => {
     it('should return all spells', () => {
       // arrange
