@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface IStyle {
+  isExpanded: boolean;
+}
+
 export const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -35,4 +39,6 @@ export const StyledDiv = styled.div`
   }
 `;
 
-export const StyledExpandableDiv = styled.div``;
+export const StyledExpandableDiv = styled.div<IStyle>`
+  display: ${({ isExpanded }) => (isExpanded ? 'block' : 'none')};
+`;

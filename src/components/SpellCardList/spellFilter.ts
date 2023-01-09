@@ -19,6 +19,45 @@ export interface IOptionToAddOrRemove {
 }
 
 export class SpellFilter {
+  static addOption(
+    currentOptions: ISelectedOptionsString,
+    optionToAdd: IOptionToAddOrRemove
+  ): ISelectedOptionsString {
+    const { type, value } = optionToAdd;
+    let optionsUpdated = { ...currentOptions };
+
+    if (value === 'All') {
+      optionsUpdated = { ...currentOptions, [type]: [] };
+    } else {
+      const arrayWithoutAll = currentOptions[type].filter(
+        (item) => item !== 'All'
+      );
+      optionsUpdated = { ...currentOptions, [type]: arrayWithoutAll };
+    }
+
+    optionsUpdated[type].push(value);
+
+    return optionsUpdated;
+  }
+
+  static removeOption(
+    currentOptions: ISelectedOptionsString,
+    optionToRemove: IOptionToAddOrRemove
+  ): ISelectedOptionsString {
+    const { type, value } = optionToRemove;
+
+    const arrayUpdated = currentOptions[type].filter(
+      (optionValue) => optionValue !== value
+    );
+    let optionsUpdated = { ...currentOptions, [type]: arrayUpdated };
+
+    if (optionsUpdated[type].length === 0) {
+      optionsUpdated = { ...optionsUpdated, [type]: ['All'] };
+    }
+
+    return optionsUpdated;
+  }
+
   static filterBySelectedOptions(
     currentOptions: ISelectedOptionsString,
     currentSpells: ISpellData[]
@@ -102,45 +141,6 @@ export class SpellFilter {
     if (isPracticeToShowAll) return true;
 
     return practices.some((practice) => practice === spellPractice);
-  }
-
-  static addOption(
-    currentOptions: ISelectedOptionsString,
-    optionToAdd: IOptionToAddOrRemove
-  ): ISelectedOptionsString {
-    const { type, value } = optionToAdd;
-    let optionsUpdated = { ...currentOptions };
-
-    if (value === 'All') {
-      optionsUpdated = { ...currentOptions, [type]: [] };
-    } else {
-      const arrayWithoutAll = currentOptions[type].filter(
-        (item) => item !== 'All'
-      );
-      optionsUpdated = { ...currentOptions, [type]: arrayWithoutAll };
-    }
-
-    optionsUpdated[type].push(value);
-
-    return optionsUpdated;
-  }
-
-  static removeOption(
-    currentOptions: ISelectedOptionsString,
-    optionToRemove: IOptionToAddOrRemove
-  ): ISelectedOptionsString {
-    const { type, value } = optionToRemove;
-
-    const arrayUpdated = currentOptions[type].filter(
-      (optionValue) => optionValue !== value
-    );
-    let optionsUpdated = { ...currentOptions, [type]: arrayUpdated };
-
-    if (optionsUpdated[type].length === 0) {
-      optionsUpdated = { ...optionsUpdated, [type]: ['All'] };
-    }
-
-    return optionsUpdated;
   }
 
   static formatOptions(

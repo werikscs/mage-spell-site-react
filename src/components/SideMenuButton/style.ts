@@ -9,6 +9,7 @@ const StyledSideMenuButton = styled.button<IStyledButton>`
   align-items: center;
 
   border-radius: 8px;
+  width: 100%;
 
   ${({ theme, variant }) => {
     switch (variant) {
