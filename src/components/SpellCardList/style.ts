@@ -7,7 +7,8 @@ interface IStyledBox {
 }
 
 const setWidth = (width: number): number => {
-  return width < 1024 ? width : width - 270;
+  const newWidth = width < 1024 ? width : width - 270 - 15;
+  return newWidth;
 };
 
 const StyledBox = styled(Box).attrs(({ width }) => ({
@@ -20,7 +21,8 @@ interface IStyledMasonry {
 
 const setColumnNumber = (width: number): number => {
   let columnNumber = 1;
-  if (width >= 720) columnNumber = Math.floor((width - 270) / 360);
+  if (width >= 720) columnNumber = 2;
+  if (width >= 1024) columnNumber = Math.floor((width - 270) / 360);
   return columnNumber;
 };
 
