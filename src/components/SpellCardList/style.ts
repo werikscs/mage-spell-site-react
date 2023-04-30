@@ -6,14 +6,15 @@ interface IStyledBox {
   width: number;
 }
 
-const setWidth = (width: number): number => {
-  const newWidth = width < 1024 ? width : width - 270 - 15;
-  return newWidth;
-};
+const StyledBox = styled(Box)<IStyledBox>`
+  && {
+    padding: 4px;
 
-const StyledBox = styled(Box).attrs(({ width }) => ({
-  width: setWidth(width),
-}))<IStyledBox>``;
+    @media screen and (min-width: 1024px) {
+      width: calc(100% - 270px);
+    }
+  }
+`;
 
 interface IStyledMasonry {
   width: number;
@@ -26,9 +27,10 @@ const setColumnNumber = (width: number): number => {
   return columnNumber;
 };
 
-const StyledMasonry = styled(Masonry).attrs(({ width }) => ({
+const StyledMasonry = styled(Masonry).attrs<IStyledMasonry>(({ width }) => ({
   columns: setColumnNumber(width),
-}))<IStyledMasonry>`
+  spacing: 1.5,
+}))`
   &.MuiMasonry-root {
     margin: 0;
   }
