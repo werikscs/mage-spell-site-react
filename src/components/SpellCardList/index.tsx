@@ -3,13 +3,13 @@ import WindowSizeContext from '../../context/WindowSizeContext';
 import SpellCardLi from '../SpellCardLi';
 import SpellCardFormatter from '../SpellCardLi/spellCardFormatter';
 
-import spells from '../../utils/spells';
-
 import { StyledBox, StyledMasonry } from './style';
+import SpellFilterContext from '../../context/SpellFilterContext';
 
 function SpellCardList(): JSX.Element {
-  const { width, height } = useContext(WindowSizeContext);
-  const spellSliced = spells.slice(0, 50);
+  const { width } = useContext(WindowSizeContext);
+  const { localSpellList } = useContext(SpellFilterContext);
+  const spellSliced = localSpellList;
 
   return (
     <StyledBox width={width}>

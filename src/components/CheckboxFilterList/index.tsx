@@ -5,9 +5,13 @@ import StyledUl from './style';
 
 interface ICheckboxFilterList {
   dataArray: ILiArray[];
+  optionType: 'arcanas' | 'degrees' | 'practices';
 }
 
-function CheckboxFilterList({ dataArray }: ICheckboxFilterList): JSX.Element {
+function CheckboxFilterList({
+  optionType,
+  dataArray,
+}: ICheckboxFilterList): JSX.Element {
   const [resetCheckbox, setResetCheckbox] = useState<boolean>(false);
 
   return (
@@ -19,6 +23,7 @@ function CheckboxFilterList({ dataArray }: ICheckboxFilterList): JSX.Element {
           otherText={dataItem.otherText}
           hasCheckbox={dataItem.hasCheckbox}
           resetCheckboxState={{ resetCheckbox, setResetCheckbox }}
+          optionType={optionType}
         />
       ))}
     </StyledUl>
