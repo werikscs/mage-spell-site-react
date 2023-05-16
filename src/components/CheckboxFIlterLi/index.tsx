@@ -1,15 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ILiComponent } from '../../utils/componentData';
 import CheckboxIcon from '../Icons/CheckboxIcon';
 import StyledLi from './style';
+import SpellFilterContext from '../../context/SpellFilterContext';
+
+type Prop = {
+  title: string;
+  otherText?: string;
+  hasCheckbox?: boolean;
+  // eslint-disable-next-line react/require-default-props
+  resetCheckboxState?: {
+    resetCheckbox: boolean;
+    setResetCheckbox: (value: boolean) => void;
+  };
+  optionType: 'arcanas' | 'degrees' | 'practices';
+};
 
 function CheckboxFilterLi({
   title,
   otherText,
   hasCheckbox,
   resetCheckboxState,
-}: ILiComponent): JSX.Element {
+  optionType,
+}: Prop): JSX.Element {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const { filterSpells } = useContext(SpellFilterContext);
 
   useEffect(() => {
     setIsChecked(false);
@@ -17,11 +32,15 @@ function CheckboxFilterLi({
 
   const handleOnClick = () => {
     if (hasCheckbox) {
-      setIsChecked(!isChecked);
+      setIsChecked(() => !isChecked);
     } else {
       resetCheckboxState?.setResetCheckbox(!resetCheckboxState.resetCheckbox);
     }
-    console.log('filtrar spells por', title);
+    filterSpells({
+      optionType,
+      value: title,
+      operationType: !isChecked ? 'add' : 'remove',
+    });
   };
 
   return (

@@ -10,6 +10,7 @@ import QuestionIcon from '../Icons/QuestionIcon';
 import LoginLogoutButtonSideMenu from '../LoginLogoutSideMenu';
 import AuthenticatedSideMenu from '../AuthenticatedSideMenu';
 import ExapandableOptions from '../ExapandableOptions';
+import SpellFilterContext from '../../context/SpellFilterContext';
 
 function SideMenu(): JSX.Element {
   const { isMenuOpened } = useContext(ToggleMenuContext);

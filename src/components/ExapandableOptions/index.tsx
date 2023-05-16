@@ -10,13 +10,13 @@ function ExapandableOptions(): JSX.Element {
   return (
     <>
       <ExpandableElement title="Arcanas">
-        <CheckboxFilterList dataArray={arcanasData} />
+        <CheckboxFilterList optionType="arcanas" dataArray={arcanasData} />
       </ExpandableElement>
       <ExpandableElement title="Degrees">
-        <CheckboxFilterList dataArray={degreesData} />
+        <CheckboxFilterList optionType="degrees" dataArray={degreesData} />
       </ExpandableElement>
       <ExpandableElement title="Practices">
-        <CheckboxFilterList dataArray={practicesData} />
+        <CheckboxFilterList optionType="practices" dataArray={practicesData} />
       </ExpandableElement>
     </>
   );

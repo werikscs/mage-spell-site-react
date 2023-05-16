@@ -15,7 +15,7 @@ export interface ISelectedOptionsFormattedToNumbers {
 
 export interface IOptionToAddOrRemove {
   type: 'arcanas' | 'degrees' | 'practices';
-  value: Arcanas | Degrees | Practices;
+  value: Arcanas | Degrees | Practices | string;
 }
 
 export class SpellFilter {

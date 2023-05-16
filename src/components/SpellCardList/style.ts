@@ -1,23 +1,39 @@
-import Masonry from 'react-responsive-masonry';
+import { Masonry } from '@mui/lab';
+import { Box } from '@mui/material';
 import styled from 'styled-components';
-import { IScreenDimensions } from '../../interfaces-types/interfaces';
 
-const StyledMasonry = styled(Masonry)<IScreenDimensions>`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+interface IStyledBox {
+  width: number;
+}
 
-  position: absolute;
-  left: 0;
+const StyledBox = styled(Box)<IStyledBox>`
+  && {
+    padding: 4px;
 
-  padding: 0.5rem;
-
-  height: calc(
-    ${({ screenDimensions }) => screenDimensions.height}px -
-      ${({ theme }) => theme.sizes.headerHeight}
-  );
-
-  overflow-y: auto;
+    @media screen and (min-width: 1024px) {
+      width: calc(100% - 270px);
+    }
+  }
 `;
 
-export default StyledMasonry;
+interface IStyledMasonry {
+  width: number;
+}
+
+const setColumnNumber = (width: number): number => {
+  let columnNumber = 1;
+  if (width >= 720) columnNumber = 2;
+  if (width >= 1024) columnNumber = Math.floor((width - 270) / 360);
+  return columnNumber;
+};
+
+const StyledMasonry = styled(Masonry).attrs<IStyledMasonry>(({ width }) => ({
+  columns: setColumnNumber(width),
+  spacing: 1.5,
+}))`
+  &.MuiMasonry-root {
+    margin: 0;
+  }
+`;
+
+export { StyledBox, StyledMasonry };

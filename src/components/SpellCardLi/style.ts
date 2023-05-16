@@ -18,7 +18,7 @@ const StyledLi = styled.li<IStyledLi>`
 
   border-radius: 8px;
 
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.secondary};
 
   box-shadow: 0 4px 4px ${({ theme }) => theme.colors.shadow};
 

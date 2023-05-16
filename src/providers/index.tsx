@@ -6,20 +6,25 @@ import ToggleMenuProvider from './ToggleMenuProvider';
 import ToogleThemeProvider from './ToggleThemeProvider';
 import WindowSizeProvider from './WindowSizeProvider';
 import AuthenticateProvider from './AuthenticateProvider';
+import { SpellFilterProvider } from './SpellFilterProvider';
 
 function Providers({ children }: IReactChildren) {
   return (
     <WindowSizeProvider>
       <AuthenticateProvider>
-        <ToogleThemeProvider>
-          <ToggleThemeContext.Consumer>
-            {(value) => (
-              <ThemeProvider theme={value.themeType === 'light' ? light : dark}>
-                <ToggleMenuProvider>{children}</ToggleMenuProvider>
-              </ThemeProvider>
-            )}
-          </ToggleThemeContext.Consumer>
-        </ToogleThemeProvider>
+        <SpellFilterProvider>
+          <ToogleThemeProvider>
+            <ToggleThemeContext.Consumer>
+              {(value) => (
+                <ThemeProvider
+                  theme={value.themeType === 'light' ? light : dark}
+                >
+                  <ToggleMenuProvider>{children}</ToggleMenuProvider>
+                </ThemeProvider>
+              )}
+            </ToggleThemeContext.Consumer>
+          </ToogleThemeProvider>
+        </SpellFilterProvider>
       </AuthenticateProvider>
     </WindowSizeProvider>
   );
