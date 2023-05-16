@@ -1,8 +1,10 @@
-import { Masonry } from '@mui/lab';
-import { Box } from '@mui/material';
+import { Masonry, MasonryProps } from '@mui/lab';
+import { Box, BoxProps } from '@mui/material';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import WindowSizeContext from '../../context/WindowSizeContext';
 
-interface IStyledBox {
+interface IStyledBox extends BoxProps {
   width: number;
 }
 
@@ -16,10 +18,6 @@ const StyledBox = styled(Box)<IStyledBox>`
   }
 `;
 
-interface IStyledMasonry {
-  width: number;
-}
-
 const setColumnNumber = (width: number): number => {
   let columnNumber = 1;
   if (width >= 720) columnNumber = 2;
@@ -27,8 +25,8 @@ const setColumnNumber = (width: number): number => {
   return columnNumber;
 };
 
-const StyledMasonry = styled(Masonry).attrs<IStyledMasonry>(({ width }) => ({
-  columns: setColumnNumber(width),
+const StyledMasonry = styled(Masonry).attrs(() => ({
+  columns: setColumnNumber(useContext(WindowSizeContext).width),
   spacing: 1.5,
 }))`
   &.MuiMasonry-root {

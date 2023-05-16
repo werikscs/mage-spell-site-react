@@ -13,7 +13,7 @@ function SpellCardList(): JSX.Element {
 
   return (
     <StyledBox width={width}>
-      <StyledMasonry width={width}>
+      <StyledMasonry>
         {spellSliced.map((spell) => (
           <SpellCardLi
             key={spell.id}
