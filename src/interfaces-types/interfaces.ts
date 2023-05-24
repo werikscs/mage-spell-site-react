@@ -16,10 +16,6 @@ export interface IButton {
   onClick: () => void;
 }
 
-export interface IScreenDimensions {
-  screenDimensions: { width: number; height: number };
-}
-
 export type SpellTypeFormatted = { arcana: string; degree: string };
 export type SpellType = { arcana: number; degree: number };
 
