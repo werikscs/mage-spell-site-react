@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IReactChildren } from '../interfaces-types/interfaces';
+import { IReactChildren, ISpellData } from '../interfaces-types/interfaces';
 import spells from '../utils/spells';
 import SpellFilterContext from '../context/SpellFilterContext';
 import {
@@ -14,6 +14,10 @@ type FilterSpellsData = {
   operationType: 'add' | 'remove';
 };
 
+const limitSpellsPerPage = (spellList: ISpellData[]) => {
+  return spellList.slice(0, 25);
+};
+
 export function SpellFilterProvider({ children }: IReactChildren) {
   const defaultSpellList = spells;
   const defaultFilterOptions: ISelectedOptionsString = {
@@ -22,7 +26,7 @@ export function SpellFilterProvider({ children }: IReactChildren) {
     practices: [Practices.all],
   };
   const [localSpellList, setLocalSpellList] = useState(
-    defaultSpellList.slice(0, 100)
+    limitSpellsPerPage(defaultSpellList)
   );
 
   const [currentOptions, setCurrentOptions] = useState(defaultFilterOptions);
@@ -49,7 +53,8 @@ export function SpellFilterProvider({ children }: IReactChildren) {
       tempOptions,
       currentSpells
     );
-    setLocalSpellList(() => filteredSpellList);
+
+    setLocalSpellList(() => limitSpellsPerPage(filteredSpellList));
   };
 
   const SpellFilterContextValue = {
