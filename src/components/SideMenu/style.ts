@@ -1,10 +1,14 @@
-import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { IScreenDimensions } from '../../interfaces-types/interfaces';
 
-const StyledDiv = styled(motion.div)`
-  display: flex;
+type DivProps = {
+  isMenuOpen: boolean;
+};
+
+const StyledDiv = styled.div<DivProps>`
+  display: ${({ isMenuOpen }) => (isMenuOpen ? 'flex' : 'none')};
   justify-content: end;
+  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
+  width: 100%;
 
   position: fixed;
   top: ${({ theme }) => theme.sizes.headerHeight};
@@ -13,35 +17,11 @@ const StyledDiv = styled(motion.div)`
 
   background-color: ${({ theme }) => theme.colors.shadowMenu};
 
-  height: calc(100vh - ${({ theme }) => theme.sizes.headerHeight});
-`;
-
-const StyledSection = styled(motion.section)<IScreenDimensions>`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  width: ${({ theme }) => theme.sizes.sideMenu};
-  height: calc(
-    ${({ screenDimensions }) => screenDimensions.height}px -
-      ${({ theme }) => theme.sizes.headerHeight}
-  );
-
-  padding: 16px;
-
-  box-shadow: -2px 5px 5px ${({ theme }) => theme.colors.shadow};
-
-  background-color: ${({ theme }) => theme.colors.secondary};
-
-  overflow-y: auto;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  .divider:last-of-type {
-    margin-top: auto;
+  @media screen and (min-width: ${({ theme }) =>
+      `${theme.sizes.maxMobileScreen}px`}) {
+    display: flex;
+    width: fit-content;
   }
 `;
 
-export { StyledDiv, StyledSection };
+export { StyledDiv };
