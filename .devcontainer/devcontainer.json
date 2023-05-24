@@ -1,0 +1,19 @@
+{
+	"name": "Front - Community Spells",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"woodreamz.es7-react-js-snippets",
+				"yoga-au.px-to-em",
+				"jock.svg",
+				"styled-components.vscode-styled-components",
+				"eamodio.gitlens",
+				"formulahendry.auto-close-tag",
+				"formulahendry.auto-rename-tag"
+			]
+		}
+	}
+}
